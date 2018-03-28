@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SpringRH | Activación</title>
+
+    <link rel="icon" type="image/png" href="{% static 'img/icono-springlabs.png' %}" />
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'font-awesome/css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'css/plugins/iCheck/custom.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+
+    <div class="container">
+        <div class="alert alert-dismissable alert-warning">
+            <button type="button" class="close" data-dismiss="alert"></button>
+            Para activar su cuenta de <strong>SpringRH</strong> debe suministrar en el siguiente formulario el <strong>Correo Corporativo</strong> asignado por la empresa, especificar un <strong>Nombre de Usuario</strong> y una <strong>Contraseña</strong> de su preferencia.
+        </div>
+    </div>
+
+
+    {%if form.username.errors%}
+    <div class="container">
+        <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert"></button>
+            <strong>Usuario: </strong> {{ form.username.errors.as_text }}.
+        </div>
+    </div>
+    {%endif%}
+
+    {%if form.email.errors%}
+    <div class="container">
+        <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert"></button>
+            <strong>Email: </strong> {{ form.email.errors.as_text }}.
+        </div>
+    </div>
+    {%endif%}
+
+    {%if form.password.errors%}
+    <div class="container">
+        <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert"></button>
+            <strong>Password: </strong> {{ form.password.errors.as_text }}.
+        </div>
+    </div>
+    {%endif%}
+
+    <!--  -->
+
+    {% if mensaje == 0 %}
+      <div class="container">
+        <div class="alert alert-dismissable alert-danger">
+        <button type="button" class="close" data-dismiss="alert"></button>
+        <strong>Este usuario ya se encuentra activo</strong> 
+      </div>
+    {%endif%}
+
+    {% if mensaje == 1 %}
+      <div class="container">
+        <div class="alert alert-dismissable alert-success">
+        <button type="button" class="close" data-dismiss="alert"></button>
+        Activación de usuario exitosa, ir a la sección de <strong><a class="alert-link" href="{% url 'login' %}">Login</a></strong> 
+      </div>
+    {%endif%}
+
+
+    <div class="middle-box text-center loginscreen   animated fadeInDown">
+
+        <div>
+            <div>
+
+                <h1 class="logo-name">
+                    <img src="{% static 'img/logo.png' %}" alt="logo" width="200px"><!--  -->
+                </h1>
+
+            </div>
+            <h3>Activación de Cuenta</h3>
+<!--             <h3>Register to IN+</h3>
+            <p>Create account to see it in action.</p> -->
+            <form method="post" class="m-t" role="form" action="{% url 'register' %}" enctype="multipart/form-data">{% csrf_token %}
+                
+                <div class="form-group">
+                    <!-- <input type="email" class="form-control" placeholder="Email" required=""> -->
+                    {{ form.email }}
+                </div>
+
+                <div class="form-group">
+                    <!-- <input type="text" class="form-control" placeholder="User" required=""> -->
+                    {{ form.username }}
+                </div>
+
+                <div class="form-group">
+                    <!-- <input type="password" class="form-control" placeholder="Password" required=""> -->
+                    {{ form.password }}
+                </div>
+<!--                 <div class="form-group">
+                        <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> Agree the terms and policy </label></div>
+                </div> -->
+                <button type="submit" class="btn btn-primary block full-width m-b">Activar Cuenta</button>
+
+                <p class="text-muted text-center"><small>¿Ya posse una cuenta activa?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="{% url 'login' %}"">Login</a>
+            </form>
+            <p class="m-t"> <small>Developed By <a href="#" >SpringLabs</a> &copy; 2018</small> </p>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- iCheck -->
+    <script src="{% static 'js/plugins/iCheck/icheck.min.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+</body>
+
+</html>
