@@ -60,7 +60,7 @@ def perfil(request, template_name = "empleados/perfil.html"):
 					nacionalidad = Nacionalidad(user=empleado,pais=objeto_pais)
 					nacionalidad.save()
 			#return HttpResponseRedirect('/detalles/%s' % cic) EJEMPLO PARA REDIRECT A PÁGINA CON DATOS
-			return HttpResponseRedirect('/resumen_general/')
+			return HttpResponseRedirect('/resumen/')
 		else:
 			print (form.errors)
 		form = Formulario1()
