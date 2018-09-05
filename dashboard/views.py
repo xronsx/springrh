@@ -65,7 +65,7 @@ def home(request, template_name = "dashboard/dashboard.html"):
 		etapa = empleado.status
 	except:
 		foto = 0
-		etapa = 0
+		etapa = 1
 		pass
 	return render(request, template_name, locals(),)
 

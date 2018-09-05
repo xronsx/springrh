@@ -31,7 +31,8 @@ extra_patterns1 = [
 # urls de app empleados
 extra_patterns2 = [
     url(r'^perfil', empleados_views.perfil, name = 'perfil'),
-    url(r'^resumen', empleados_views.profile, name = 'resumen'),
+    url(r'^confirma1', empleados_views.confirma_etapa_1, name = 'confirma1'),
+    url(r'^rechaza1', empleados_views.rechaza_etapa_1, name = 'rechaza1'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns = [

@@ -22,7 +22,7 @@ class Formulario1(forms.Form):
 	tlf = forms.CharField(label = "tlf", widget = forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Teléfono', 'data-mask': '(99) 9999-9999)'}))
 	tipo_documento_identidad = forms.ModelChoiceField(label = "tipo_documento_identidad", queryset=TipoDocumentoIdentidad.objects.all(), required=True, initial=1, widget = forms.Select(attrs={'class': 'form-control'}))
 	docu_ident_front = forms.FileField(label='documento_identidad_front', required = True)
-	docu_ident_back = forms.FileField(label='documento_identidad_back', required = False)
+	docu_ident_back = forms.FileField(label='documento_identidad_back', required = True)
 	pasaporte = forms.IntegerField(label = "pasaporte", required = True, widget = forms.TextInput(attrs={'class': 'form-control'}))
 	fecha_vencimiento_pasaporte = forms.DateField(label = "fecha_vencimiento_pasaporte", input_formats=settings.DATE_INPUT_FORMATS, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'DD/MM/AA'}))
 	imagen_pasaporte = forms.FileField(label='imagen_pasaporte', required = True)

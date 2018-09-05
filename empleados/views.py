@@ -9,8 +9,11 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from .models import *
 from .forms import *
+from dashboard.views import *
+from .metodos import *
 # Create your views here.
 
+@login_required(login_url = '/login/')
 def perfil(request, template_name = "empleados/perfil.html"):
 	usuario = request.user
 	try:
@@ -23,8 +26,8 @@ def perfil(request, template_name = "empleados/perfil.html"):
 		if form.is_valid():
 			apellido_paterno = form.cleaned_data['apellido_paterno']
 			apellido_materno = form.cleaned_data['apellido_materno']
-			fecha_nacimiento = datetime.datetime.strptime(request.POST['fecha_nacimiento'], '%d/%m/%Y').strftime('%Y-%m-%d')
-			fecha_vencimiento_pasaporte = datetime.datetime.strptime(request.POST['fecha_vencimiento_pasaporte'], '%d/%m/%Y').strftime('%Y-%m-%d')
+			fecha_nacimiento = datetime.strptime(request.POST['fecha_nacimiento'], '%d/%m/%Y').strftime('%Y-%m-%d')
+			fecha_vencimiento_pasaporte = datetime.strptime(request.POST['fecha_vencimiento_pasaporte'], '%d/%m/%Y').strftime('%Y-%m-%d')
 			pais_nacimiento = request.POST['pais_nacimiento']
 			pais_nacimiento = Country.objects.get(pk=pais_nacimiento)
 			edad = form.cleaned_data['edad']
@@ -59,16 +62,48 @@ def perfil(request, template_name = "empleados/perfil.html"):
 					empleado = Empleado.objects.get(user = usuario.pk)
 					nacionalidad = Nacionalidad(user=empleado,pais=objeto_pais)
 					nacionalidad.save()
-			#return HttpResponseRedirect('/detalles/%s' % cic) EJEMPLO PARA REDIRECT A PÁGINA CON DATOS
-			return HttpResponseRedirect('/resumen/')
+			form = set_values(usuario)
+			nacionalidades = Nacionalidad.objects.filter(user=empleado)
+			#return HttpResponseRedirect('/resumen/%s' % usuario.pk) #EJEMPLO PARA REDIRECT A PÁGINA CON DATOS
+			#return HttpResponseRedirect('/perfil/')
 		else:
 			print (form.errors)
-		form = Formulario1()
+			try:
+				empleado = Empleado.objects.get(user = usuario.pk)
+				if empleado:
+					form = set_values(usuario)
+					nacionalidades = Nacionalidad.objects.filter(user=empleado)
+			except:
+				form = Formulario1()
 	else:
-		#pass
-		form = Formulario1()
+		try:
+			empleado = Empleado.objects.get(user = usuario.pk)
+			if empleado:
+				form = set_values(usuario)
+				nacionalidades = Nacionalidad.objects.filter(user=empleado)
+		except:
+			form = Formulario1()
 		#form.fields['tipo_documento_identidad'].initial = datetime.now().strftime("%m-%d-%y")
 	return render(request, template_name, locals(),)
 
-def profile(request, template_name = "empleados/profile.html"):
-	return render(request, template_name, locals(),)
+@login_required(login_url = '/login/')
+def confirma_etapa_1(request, template_name = "dashboard/dashboard.html"):
+	usuario = request.user
+	try:
+		empleado = Empleado.objects.get(user = usuario.pk)
+		empleado.status = 2
+		empleado.save()
+	except:
+		pass
+	return home(request)
+
+@login_required(login_url = '/login/')
+def rechaza_etapa_1(request, template_name = "empleados/perfil.html"):
+	usuario = request.user
+	try:
+		empleado = Empleado.objects.get(user = usuario.pk)
+		empleado.status = 1
+		empleado.delete()
+	except:
+		pass
+	return perfil(request)
