@@ -77,22 +77,25 @@ def register(request, template_name = "dashboard/register.html"):
 			usuario = request.POST['username']
 			contrasena = form.cleaned_data['password']
 			# Consultar si existe correo
-			usuario_inactivo = User.objects.get(email = correo)
-			if usuario_inactivo:
-				# Verificar su status (ACTIVADO O NO ACTIVADO)
-				if usuario_inactivo.is_active:
-					mensaje = 0
-				else:
-					# Actualizar USERNAME
-					usuario_inactivo.username = usuario
-					usuario_inactivo.save()
-					# Actualizar PASSWORD
-					usuario_inactivo.set_password(contrasena)
-					usuario_inactivo.save()
-					# Cambiar status
-					usuario_inactivo.is_active = True
-					usuario_inactivo.save()
-					mensaje = 1
+			try:
+				usuario_inactivo = User.objects.get(email = correo)
+				if usuario_inactivo:
+					# Verificar su status (ACTIVADO O NO ACTIVADO)
+					if usuario_inactivo.is_active:
+						mensaje = 0
+					else:
+						# Actualizar USERNAME
+						usuario_inactivo.username = usuario
+						usuario_inactivo.save()
+						# Actualizar PASSWORD
+						usuario_inactivo.set_password(contrasena)
+						usuario_inactivo.save()
+						# Cambiar status
+						usuario_inactivo.is_active = True
+						usuario_inactivo.save()
+						mensaje = 1
+			except:
+				mensaje = 2
 		else:
 			print(form.errors)
 	else:
