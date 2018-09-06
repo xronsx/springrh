@@ -9,5 +9,6 @@ migrations/
 *.log
 settings.py
 db.sqlite3
+django
 
 # END OF FILE
