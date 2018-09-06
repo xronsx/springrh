@@ -1,0 +1,13 @@
+
+# Created by xRON'sx
+
+### Python ###
+
+__pycache__/
+media/
+migrations/
+*.log
+settings.py
+db.sqlite3
+
+# END OF FILE
