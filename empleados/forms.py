@@ -53,6 +53,16 @@ class Formulario_etapa_2(forms.Form):
 	img_visa_3 = forms.FileField(label='foto', required = False)
 	img_visa_4 = forms.FileField(label='foto', required = False)
 	img_visa_5 = forms.FileField(label='foto', required = False)
+	curp = forms.CharField(label = "curp", required = True, widget = forms.TextInput(attrs={'class': 'form-control'}))
+	imagen_curp = forms.FileField(label='imagen_curp', required = True)
+	rfc = forms.CharField(label = "rfc", required = True, widget = forms.TextInput(attrs={'class': 'form-control'}))
+	imagen_rfc = forms.FileField(label='imagen_rfc', required = True)
+	sat = forms.CharField(label = "sat", required = True, widget = forms.TextInput(attrs={'class': 'form-control'}))
+	imagen_sat = forms.FileField(label='imagen_sat', required = True)
+	infonavit = forms.CharField(label = 'infonavit', required = True, widget = forms.TextInput(attrs={'class': 'form-control'}))
+	imagen_infonavit = forms.FileField(label='imagen_infonavit', required = True)
+	imss = forms.IntegerField(label = "imss", required = True, widget = forms.TextInput(attrs={'class': 'form-control'}))
+	imagen_imss = forms.FileField(label='imagen_imss', required = True)
 	def __init__(self, *args, **kwargs):
 		super(Formulario_etapa_2, self).__init__(*args, **kwargs)
 		# Errores predeterminados definidos en el modelo este disparará errores para campo requerido, unico, invalido y con caracterers faltantes

@@ -28,3 +28,16 @@ def set_values (usuario):
 	except:
 		pass
 	return form
+
+def set_values_2 (usuario):
+	form = Formulario_etapa_2()
+	try:
+		empleado = Empleado.objects.get(user = usuario.pk)
+		form.fields['curp'].initial = empleado.curp
+		form.fields['rfc'].initial = empleado.rfc
+		form.fields['sat'].initial = empleado.sat
+		form.fields['infonavit'].initial = empleado.infonavit
+		form.fields['imss'].initial = empleado.imss
+	except:
+		pass
+	return form

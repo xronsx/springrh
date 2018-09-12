@@ -32,6 +32,17 @@ class Empleado(models.Model):
 	pasaporte_valido = models.DateTimeField('fecha de vencimiento', auto_now_add = False)
 	imagen_pasaporte = models.ImageField(upload_to = 'pasaportes/')
 	status = models.IntegerField(blank = False, default=1)
+	# ETAPA 2
+	curp = models.CharField(max_length=600, blank = True, null = True)
+	imagen_curp = models.ImageField(upload_to = 'curps/', blank = True, null = True)
+	rfc = models.CharField(max_length=600, blank = True, null = True)
+	imagen_rfc = models.ImageField(upload_to = 'rfcs/', blank = True, null = True)
+	sat = models.CharField(max_length=600, blank = True, null = True)
+	imagen_sat = models.ImageField(upload_to = 'sats/', blank = True)
+	infonavit = models.CharField(max_length=600, blank = True, null = True)
+	imagen_infonavit = models.ImageField(upload_to = 'infonavits/', blank = True, null = True)
+	imss = models.IntegerField(blank = True, null = True)
+	imagen_imss = models.ImageField(upload_to = 'imss/', blank = True, null = True)
 
 	def __str__(self):
 		return str ((self.user.first_name)+" "+(self.user.last_name))

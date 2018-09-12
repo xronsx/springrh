@@ -69,6 +69,7 @@ def perfil(request, template_name = "empleados/perfil.html"):
 			#return HttpResponseRedirect('/perfil/')
 		else:
 			print (form.errors)
+			form.errors
 			try:
 				empleado = Empleado.objects.get(user = usuario.pk)
 				if empleado:
@@ -114,8 +115,126 @@ def rechaza_etapa_1(request, template_name = "empleados/perfil.html"):
 # ========= INICIO ETAPA 2 ==========
 @login_required(login_url = '/login/')
 def etapa_2(request, template_name = "empleados/etapa_2.html"):
+	usuario = request.user
+	empleado = Empleado.objects.get(user = usuario.pk)
 	if request.method == 'POST':
-		pass
+		form = Formulario_etapa_2(request.POST, request.FILES)
+		if form.is_valid():
+			try:
+				# VISA 1
+				pais_visa_1 = request.POST['visa_1']
+				if pais_visa_1:
+					pais_visa_1 = Country.objects.get(pk=pais_visa_1)
+					fecha_vigencia_visa_1 = datetime.strptime(request.POST['vigencia_visa_1'], '%d/%m/%Y').strftime('%Y-%m-%d')
+					img_visa_1 = request.FILES['img_visa_1']
+				# VISA 2
+				pais_visa_2 = request.POST['visa_2']
+				if pais_visa_2:
+					pais_visa_2 = Country.objects.get(pk=pais_visa_2)
+					fecha_vigencia_visa_2 = datetime.strptime(request.POST['vigencia_visa_2'], '%d/%m/%Y').strftime('%Y-%m-%d')
+					img_visa_2 = request.FILES['img_visa_2']
+				# VISA 3
+				pais_visa_3 = request.POST['visa_3']
+				if pais_visa_3:
+					pais_visa_3 = Country.objects.get(pk=pais_visa_3)
+					fecha_vigencia_visa_3 = datetime.strptime(request.POST['vigencia_visa_3'], '%d/%m/%Y').strftime('%Y-%m-%d')
+					img_visa_3 = request.FILES['img_visa_3']
+				# VISA 4
+				pais_visa_4 = request.POST['visa_4']
+				if pais_visa_4:
+					pais_visa_4 = Country.objects.get(pk=pais_visa_4)
+					fecha_vigencia_visa_4 = datetime.strptime(request.POST['vigencia_visa_4'], '%d/%m/%Y').strftime('%Y-%m-%d')
+					img_visa_4 = request.FILES['img_visa_4']
+				# VISA 5
+				pais_visa_5 = request.POST['visa_5']
+				if pais_visa_5:
+					pais_visa_5 = Country.objects.get(pk=pais_visa_5)
+					fecha_vigencia_visa_5 = datetime.strptime(request.POST['vigencia_visa_5'], '%d/%m/%Y').strftime('%Y-%m-%d')
+					img_visa_5 = request.FILES['img_visa_5']
+
+				curp = form.cleaned_data['curp']
+				imagen_curp = request.FILES['imagen_curp']
+				rfc = form.cleaned_data['rfc']
+				imagen_rfc = request.FILES['imagen_rfc']
+				sat = form.cleaned_data['sat']
+				imagen_sat = request.FILES['imagen_sat']
+				infonavit = form.cleaned_data['infonavit']
+				imagen_infonavit = request.FILES['imagen_infonavit']
+				imss = form.cleaned_data['imss']
+				imagen_imss = request.FILES['imagen_imss']
+
+			except:
+				mensaje_error = "Faltan Datos"
+				print(mensaje_error)
+				form.errors
+
+			# GUARDADO DE DATOS
+			try:
+				if pais_visa_1:
+					nueva_visa = visas(user=empleado, pais=pais_visa_1, fecha_vigencia=fecha_vigencia_visa_1, imagen_visa=img_visa_1)
+					previo = visas.objects.filter(user=empleado,pais=pais_visa_1,fecha_vigencia=fecha_vigencia_visa_1)
+					if not previo.exists():
+						nueva_visa.save()
+				if pais_visa_2:
+					nueva_visa = visas(user=empleado, pais=pais_visa_2, fecha_vigencia=fecha_vigencia_visa_2, imagen_visa=img_visa_2)
+					previo = visas.objects.filter(user=empleado,pais=pais_visa_2,fecha_vigencia=fecha_vigencia_visa_2)
+					if not previo.exists():
+						nueva_visa.save()
+				if pais_visa_3:
+					nueva_visa = visas(user=empleado, pais=pais_visa_3, fecha_vigencia=fecha_vigencia_visa_3, imagen_visa=img_visa_3)
+					previo = visas.objects.filter(user=empleado,pais=pais_visa_3,fecha_vigencia=fecha_vigencia_visa_3)
+					if not previo.exists():
+						nueva_visa.save()
+				if pais_visa_4:
+					nueva_visa = visas(user=empleado, pais=pais_visa_4, fecha_vigencia=fecha_vigencia_visa_4, imagen_visa=img_visa_4)
+					previo = visas.objects.filter(user=empleado,pais=pais_visa_4,fecha_vigencia=fecha_vigencia_visa_4)
+					if not previo.exists():
+						nueva_visa.save()
+				if pais_visa_5:
+					nueva_visa = visas(user=empleado, pais=pais_visa_5, fecha_vigencia=fecha_vigencia_visa_5, imagen_visa=img_visa_5)
+					previo = visas.objects.filter(user=empleado,pais=pais_visa_5,fecha_vigencia=fecha_vigencia_visa_5)
+					if not previo.exists():
+						nueva_visa.save()
+				empleado = Empleado.objects.get(user = usuario.pk)
+				empleado.curp = curp
+				empleado.imagen_curp = imagen_curp
+				empleado.rfc = rfc
+				empleado.imagen_rfc = imagen_rfc
+				empleado.sat = sat
+				empleado.imagen_sat = imagen_sat
+				empleado.infonavit = infonavit
+				empleado.imagen_infonavit = imagen_infonavit
+				empleado.imss = imss
+				empleado.imagen_imss = imagen_imss
+				empleado.status = 3
+				empleado.save()
+				if visas.objects.filter(user=empleado).exists():
+					todas_visas = visas.objects.filter(user=empleado)
+				form = set_values_2(usuario)
+			except:
+				mensaje_error = "Error al guardar datos"
+				print (mensaje_error)
+				form.errors
+
+		else:
+			form.errors
+			try:
+				empleado = Empleado.objects.get(user = usuario.pk)
+				if empleado.status == 3:
+					if visas.objects.filter(user=empleado).exists():
+						todas_visas = visas.objects.filter(user=empleado)
+					form = set_values_2(usuario)
+			except:
+				form = Formulario_etapa_2()
 	else:
-		form = Formulario_etapa_2()
+		try:
+			empleado = Empleado.objects.get(user = usuario.pk)
+			if empleado.status == 3:
+				if visas.objects.filter(user=empleado).exists():
+					todas_visas = visas.objects.filter(user=empleado)
+				form = set_values_2(usuario)
+			else:
+				form = Formulario_etapa_2()
+		except:
+			pass
 	return render(request, template_name, locals(),)
