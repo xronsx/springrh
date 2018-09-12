@@ -118,26 +118,16 @@
             {% if etapa == 1 %}
 
             <a href="{% url 'perfil' %}">
-            <button class="btn btn-info  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="left" title="Perfil"><i class="fa fa-user-circle"></i></button>
+            <button class="btn btn-info  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="left" title="Etapa 1"><i class="fa fa-user-circle"></i></button>
             </a>
-
-<!--             <button class="btn btn-warning  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Información Profesional"><i class="fa fa-address-book" ></i></button>
-
-             <button class="btn btn-success  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="bottom" title="Currículum Vitae"><i class="fa fa-drivers-license"></i></button>
-
-             <button class="btn btn-danger  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="right" title="Por Definir"><i class="fa fa-plus-square-o"></i></button> -->
 
              {% elif etapa == 2 %}
 
-            <a href="{% url 'perfil' %}">
-            <button class="btn btn-info  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="left" title="Perfil"><i class="fa fa-user-circle"></i></button>
-            </a>
+            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="left" title="Etapa 1, COMPLETADA"><i class="fa fa-user-circle"></i></button>
 
-            <button class="btn btn-warning  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Información Profesional"><i class="fa fa-address-book" ></i></button>
-
-<!--              <button class="btn btn-success  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="bottom" title="Currículum Vitae"><i class="fa fa-drivers-license"></i></button>
-
-             <button class="btn btn-danger  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="right" title="Por Definir"><i class="fa fa-plus-square-o"></i></button>         -->     
+            <a href="{% url 'etapa-2' %}">
+            <button class="btn btn-warning  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Etapa 2"><i class="fa fa-address-book" ></i></button>
+            </a> 
 
              {% endif %}
 

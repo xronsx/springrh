@@ -36,3 +36,29 @@ class Formulario1(forms.Form):
 				fieldname=field.label), 'invalid':'Valor Inválido'.format(
 				fieldname=field.label), 'min_length':'Realice completacion de campo {fieldname}'.format(
 				fieldname=field.label)}
+
+class Formulario_etapa_2(forms.Form):
+	visa_1 = forms.ModelChoiceField(label = "visa_1", required = False, queryset=Country.objects.all().order_by('pais'),  widget = forms.Select(attrs={'class': 'form-control'}))
+	visa_2 = forms.ModelChoiceField(label = "visa_2", required = False, queryset=Country.objects.all().order_by('pais'),  widget = forms.Select(attrs={'class': 'form-control'}))
+	visa_3 = forms.ModelChoiceField(label = "visa_3", required = False, queryset=Country.objects.all().order_by('pais'),  widget = forms.Select(attrs={'class': 'form-control'}))
+	visa_4 = forms.ModelChoiceField(label = "visa_4", required = False, queryset=Country.objects.all().order_by('pais'),  widget = forms.Select(attrs={'class': 'form-control'}))
+	visa_5 = forms.ModelChoiceField(label = "visa_5", required = False, queryset=Country.objects.all().order_by('pais'),  widget = forms.Select(attrs={'class': 'form-control'}))
+	vigencia_visa_1 = forms.DateField(label = "vigencia_visa_1", required = False, input_formats=settings.DATE_INPUT_FORMATS, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'DD/MM/AA'}))
+	vigencia_visa_2 = forms.DateField(label = "vigencia_visa_2", required = False, input_formats=settings.DATE_INPUT_FORMATS, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'DD/MM/AA'}))
+	vigencia_visa_3 = forms.DateField(label = "vigencia_visa_3", required = False, input_formats=settings.DATE_INPUT_FORMATS, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'DD/MM/AA'}))
+	vigencia_visa_4 = forms.DateField(label = "vigencia_visa_4", required = False, input_formats=settings.DATE_INPUT_FORMATS, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'DD/MM/AA'}))
+	vigencia_visa_5 = forms.DateField(label = "vigencia_visa_5", required = False, input_formats=settings.DATE_INPUT_FORMATS, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'DD/MM/AA'}))
+	img_visa_1 = forms.FileField(label='foto', required = False)
+	img_visa_2 = forms.FileField(label='foto', required = False)
+	img_visa_3 = forms.FileField(label='foto', required = False)
+	img_visa_4 = forms.FileField(label='foto', required = False)
+	img_visa_5 = forms.FileField(label='foto', required = False)
+	def __init__(self, *args, **kwargs):
+		super(Formulario_etapa_2, self).__init__(*args, **kwargs)
+		# Errores predeterminados definidos en el modelo este disparará errores para campo requerido, unico, invalido y con caracterers faltantes
+		for field in self.fields.values():
+			field.error_messages = {'required':'Ingrese {fieldname}'.format(
+				fieldname=field.label), 'unique':'{fieldname} registrada en el sistema'.format(
+				fieldname=field.label), 'invalid':'Valor Inválido'.format(
+				fieldname=field.label), 'min_length':'Realice completacion de campo {fieldname}'.format(
+				fieldname=field.label)}

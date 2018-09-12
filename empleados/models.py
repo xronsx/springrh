@@ -43,10 +43,11 @@ class Nacionalidad(models.Model):
 	def __str__(self):
 		return str ((self.user.user.first_name)+" "+(self.user.user.last_name)+" "+(self.pais.pais))
 
-# class visas(models.Model):
-# 	user = models.ForeignKey(Empleado, related_name="user_de")
-# 	pais = models.ForeignKey(Country, related_name="nacionalidad_de")
-# 	imagen_visa = models.ImageField(upload_to = 'visas/')
+class visas(models.Model):
+	user = models.ForeignKey(Empleado, related_name="user_de_visas")
+	pais = models.ForeignKey(Country, related_name="nacionalidad_de_visas")
+	fecha_vigencia = models.DateTimeField('fecha de termino de vigencia', auto_now_add = False)
+	imagen_visa = models.ImageField(upload_to = 'visas/')
 
-# 	def __str__(self):
-# 		return str ((self.user.user.first_name)+" "+(self.user.user.last_name)+" "+(self.pais.pais))
+	def __str__(self):
+		return str ((self.user.user.first_name)+" "+(self.user.user.last_name)+" "+(self.pais.pais))

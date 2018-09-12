@@ -13,6 +13,7 @@ from dashboard.views import *
 from .metodos import *
 # Create your views here.
 
+# ========= INICIO ETAPA 1 ==========
 @login_required(login_url = '/login/')
 def perfil(request, template_name = "empleados/perfil.html"):
 	usuario = request.user
@@ -107,3 +108,14 @@ def rechaza_etapa_1(request, template_name = "empleados/perfil.html"):
 	except:
 		pass
 	return perfil(request)
+# ========= FIN ETAPA 1 ==========
+
+
+# ========= INICIO ETAPA 2 ==========
+@login_required(login_url = '/login/')
+def etapa_2(request, template_name = "empleados/etapa_2.html"):
+	if request.method == 'POST':
+		pass
+	else:
+		form = Formulario_etapa_2()
+	return render(request, template_name, locals(),)
