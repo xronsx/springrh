@@ -151,6 +151,12 @@ def etapa_2(request, template_name = "empleados/etapa_2.html"):
 					pais_visa_5 = Country.objects.get(pk=pais_visa_5)
 					fecha_vigencia_visa_5 = datetime.strptime(request.POST['vigencia_visa_5'], '%d/%m/%Y').strftime('%Y-%m-%d')
 					img_visa_5 = request.FILES['img_visa_5']
+				# LICENCIA
+				licencia = request.POST['licencia_conducir']
+				if licencia:
+					estado_emision = form.cleaned_data['estado_emision_licencia']
+					fecha_vigencia_licencia = datetime.strptime(request.POST['vigencia_licencia_conducir'], '%d/%m/%Y').strftime('%Y-%m-%d')
+					img_licencia = request.FILES['img_licencia']
 
 				curp = form.cleaned_data['curp']
 				imagen_curp = request.FILES['imagen_curp']
@@ -195,6 +201,14 @@ def etapa_2(request, template_name = "empleados/etapa_2.html"):
 					previo = visas.objects.filter(user=empleado,pais=pais_visa_5,fecha_vigencia=fecha_vigencia_visa_5)
 					if not previo.exists():
 						nueva_visa.save()
+				if licencia:
+					nueva_licencia = LicenciasConducir(user=empleado,
+						permanente=request.POST['permanente'], 
+						fecha_vigencia=fecha_vigencia_licencia, 
+						estado_emision=estado_emision, 
+						imagen_licencia=img_licencia, 
+						licencia=licencia)
+					nueva_licencia.save()
 				empleado = Empleado.objects.get(user = usuario.pk)
 				empleado.curp = curp
 				empleado.imagen_curp = imagen_curp
@@ -210,6 +224,8 @@ def etapa_2(request, template_name = "empleados/etapa_2.html"):
 				empleado.save()
 				if visas.objects.filter(user=empleado).exists():
 					todas_visas = visas.objects.filter(user=empleado)
+				if LicenciasConducir.objects.filter(user=empleado).exists():
+					licencia_data = LicenciasConducir.objects.filter(user=empleado)
 				form = set_values_2(usuario)
 			except:
 				mensaje_error = "Error al guardar datos"
@@ -223,6 +239,8 @@ def etapa_2(request, template_name = "empleados/etapa_2.html"):
 				if empleado.status == 3:
 					if visas.objects.filter(user=empleado).exists():
 						todas_visas = visas.objects.filter(user=empleado)
+					if LicenciasConducir.objects.filter(user=empleado).exists():
+						licencia_data = LicenciasConducir.objects.filter(user=empleado)
 					form = set_values_2(usuario)
 			except:
 				form = Formulario_etapa_2()
@@ -232,6 +250,8 @@ def etapa_2(request, template_name = "empleados/etapa_2.html"):
 			if empleado.status == 3:
 				if visas.objects.filter(user=empleado).exists():
 					todas_visas = visas.objects.filter(user=empleado)
+				if LicenciasConducir.objects.filter(user=empleado).exists():
+					licencia_data = LicenciasConducir.objects.filter(user=empleado)
 				form = set_values_2(usuario)
 			else:
 				form = Formulario_etapa_2()
@@ -253,6 +273,9 @@ def rechaza_etapa_2(request, template_name = "empleados/etapa_2.html"):
 		if visas.objects.filter(user=empleado).exists():
 			todas_visas = visas.objects.filter(user=empleado)
 			todas_visas.delete()
+		if LicenciasConducir.objects.filter(user=empleado).exists():
+			licencia_data = LicenciasConducir.objects.filter(user=empleado)
+			licencia_data.delete()
 	except:
 		pass
 	return etapa_2(request)

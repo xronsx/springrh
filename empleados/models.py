@@ -62,3 +62,14 @@ class visas(models.Model):
 
 	def __str__(self):
 		return str ((self.user.user.first_name)+" "+(self.user.user.last_name)+" "+(self.pais.pais))
+
+class LicenciasConducir(models.Model):
+	user = models.ForeignKey(Empleado, related_name="user_de_licencia")
+	fecha_vigencia = models.DateTimeField('fecha de termino de vigencia', auto_now_add = False)
+	imagen_licencia = models.ImageField(upload_to = 'licencias_conducir/')
+	permanente = models.BooleanField(default=False)
+	estado_emision = models.CharField(max_length=600)
+	licencia = models.CharField(max_length=600, unique=True)
+
+	def __str__(self):
+		return str ((self.user.user.first_name)+" "+(self.user.user.last_name)+" "+(self.pais.pais))

@@ -494,6 +494,12 @@
             document.getElementById('visa_4').style.display = 'none';
             document.getElementById('visa_5').style.display = 'none';
         }
+
+        if (document.getElementById('inlineRadio8').checked) {
+            document.getElementById('licencia').style.display = 'block';
+        }else{
+            document.getElementById('licencia').style.display = 'none';
+        }
     }
     </script>
 
@@ -701,12 +707,19 @@
                         <i class="fa fa-vcard-o"></i> <strong>Sección 1</strong>
                     </div>
                     <div class="panel-body">
+                    {% if todas_visas %}
                     {% for visa in todas_visas%}
                         <label>Visa {{forloop.counter}}</label><br>
                         <label>País: </label> {{visa.pais}}<br>
                         <label>Vigencia: </label> {{visa.fecha_vigencia}}<br>
-                        <br>
                     {% endfor %}
+                    {% else %}
+                        {% if empleado.status == 3 %}
+                            <strong>Visas: </strong> N/A
+                            {% endif %}
+
+                    {% endif %}
+
                         {% if empleado.status != 3 %}
                         <fieldset>
 
@@ -902,12 +915,101 @@
                                 </div>
                                 <br>
                             </div>
-                            <!-- FIN VISA 5 -->
+
+                            <!-- INICIO LICENCIA DE CONDUCIR -->
+                            
                     </div>
                 </div>
                 <div class="panel panel-warning">
                     <div class="panel-heading">
                         <i class="fa fa-vcard-o"></i> <strong>Sección 2</strong>
+                    </div>
+                    <div class="panel-body">
+
+                    {% if licencia_data %}
+                    {% for licencia in licencia_data%}
+                        <label>Licencia: </label> {{licencia.licencia}}<br>
+                        <label>Vigente hasta: </label> {{licencia.fecha_vigencia}}<br>
+                        <label>Emitida en: </label> {{licencia.estado_emision}}<br>
+                        {% if licencia.permanente == False%}
+                            <label>Permanete: </label> NO<br>
+                        {% else %}
+                            <label>Permanete: </label> Si<br>
+                        {% endif %}
+                    {% endfor %}
+                    {% else %}
+                        {% if empleado.status == 3 %}
+                            <strong>Licencia: </strong> N/A
+                        {% endif %}
+                    {% endif %}
+
+                    {% if empleado.status != 3 %}
+                    <fieldset>
+
+                            <p><strong>LICENCIA DE CONDUCIR</strong></p>
+                            <div class="radio radio-info radio-inline">
+                                <input type="radio" onclick="javascript:yesnoCheck();" id="inlineRadio7" value="option7" name="radioInline" checked="">
+                                <label for="inlineRadio7"> N/A </label>
+                            </div>
+                            <div class="radio radio-info radio-inline">
+                                <input type="radio" onclick="javascript:yesnoCheck();" id="inlineRadio8" value="option8" name="radioInline">
+                                <label for="inlineRadio8"> Si </label>
+                            </div>
+
+
+                        </fieldset>
+                        <br>
+                        {% endif %}
+                    <!-- <div id="visa_6" style="display:none"> -->
+                            <div id="licencia" style="display:none">
+
+                                <div class="form-group">
+                                    <label>Permanente</label>
+                                    {{ form.permanente }}
+                                </div>
+
+                                <label>Licencia de conducir</label>
+                                {{ form.licencia_conducir}}
+                                <br>
+
+                                <div class="form-group">
+                                    <label>Estado de emisión</label>
+                                    {{ form.estado_emision_licencia }}
+                                </div>
+
+                                <div class="form-group" id="data_1">
+
+                                        <label>Vigente hasta</label>
+                                        <div class="input-group date">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><!-- <input type="text" class="form-control"> -->
+                                            {{ form.vigencia_licencia_conducir }}
+                                        </div>
+
+                                </div>
+                                <br>
+                                
+                                <label>Imagen de la licencia</label>
+                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                <div class="form-control" data-trigger="fileinput">
+                                    <i class="glyphicon glyphicon-file fileinput-exists"></i> 
+                                    <span class="fileinput-filename"></span>
+                                </div>
+                                <span class="input-group-addon btn btn-default btn-file">
+                                    <span class="fileinput-new">Seleccionar</span>
+                                    <span class="fileinput-exists">Cambiar</span>
+                                    <!-- <input type="file" name="..."> -->
+                                    {{ form.img_licencia }}
+                                </span>
+                                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <!-- FIN LICENCIA DE CONDUCIR -->
+                    </div>
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <i class="fa fa-vcard-o"></i> <strong>Sección 3</strong>
                     </div>
                     <div class="panel-body">
 
@@ -1039,6 +1141,12 @@
                         {% for visa in todas_visas%}
 
                         <a href="{{visa.imagen_visa.url}}" title="Visa {{visa.pais}}" data-gallery=""><img src="{{visa.imagen_visa.url}}" height="165" width="165"></a>
+
+                        {% endfor %}
+
+                        {% for licencia in licencia_data %}
+
+                        <a href="{{licencia.imagen_licencia.url}}" title="Licencia {{licencia.licencia}}" data-gallery=""><img src="{{licencia.imagen_licencia.url}}" height="165" width="165"></a>
 
                         {% endfor %}
 
