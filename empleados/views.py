@@ -238,3 +238,32 @@ def etapa_2(request, template_name = "empleados/etapa_2.html"):
 		except:
 			pass
 	return render(request, template_name, locals(),)
+
+@login_required(login_url = '/login/')
+def rechaza_etapa_2(request, template_name = "empleados/etapa_2.html"):
+	usuario = request.user
+	try:
+		empleado = Empleado.objects.get(user = usuario.pk)
+		empleado.status = 2
+		empleado.imagen_curp.delete(save=True)
+		empleado.imagen_rfc.delete(save=True)
+		empleado.imagen_sat.delete(save=True)
+		empleado.imagen_infonavit.delete(save=True)
+		empleado.imagen_imss.delete(save=True)
+		if visas.objects.filter(user=empleado).exists():
+			todas_visas = visas.objects.filter(user=empleado)
+			todas_visas.delete()
+	except:
+		pass
+	return etapa_2(request)
+
+@login_required(login_url = '/login/')
+def confirma_etapa_2(request, template_name = "dashboard/dashboard.html"):
+	usuario = request.user
+	try:
+		empleado = Empleado.objects.get(user = usuario.pk)
+		empleado.status = 4
+		empleado.save()
+	except:
+		pass
+	return home(request)

@@ -1030,21 +1030,27 @@
                         {% endif %}
                     </div>
                 </div>
-                        {% if empleado.status == 3 %}
+                    {% if empleado.status == 3 %}
 
                     <div class="lightBoxGallery">
 
                     <div>
 
-                        <a href="{{user.empleado.foto.url}}" title="Foto pefil" data-gallery=""><img src="{{user.empleado.foto.url}}" height="165" width="165"></a>
+                        {% for visa in todas_visas%}
 
-                        <a href="{{user.empleado.acta_nacimiento.url}}" title="Acta de nacimiento" data-gallery=""><img src="{{user.empleado.acta_nacimiento.url}}" height="165" width="165"></a>
+                        <a href="{{visa.imagen_visa.url}}" title="Visa {{visa.pais}}" data-gallery=""><img src="{{visa.imagen_visa.url}}" height="165" width="165"></a>
 
-                        <a href="{{user.empleado.docu_ident_front.url}}" title="Documento de identidad imagen frontal" data-gallery=""><img src="{{user.empleado.docu_ident_front.url}}" height="165" width="165"></a>
+                        {% endfor %}
 
-                        <a href="{{user.empleado.docu_ident_back.url}}" title="Documento de identidad imagen trasera" data-gallery=""><img src="{{user.empleado.docu_ident_back.url}}" height="165" width="165"></a>
+                        <a href="{{user.empleado.imagen_curp.url}}" title="CURP" data-gallery=""><img src="{{user.empleado.imagen_curp.url}}" height="165" width="165"></a>
 
-                        <a href="{{user.empleado.imagen_pasaporte.url}}" title="Pasaporte" data-gallery=""><img src="{{user.empleado.imagen_pasaporte.url}}" height="165" width="165"></a>
+                        <a href="{{user.empleado.imagen_rfc.url}}" title="RFC" data-gallery=""><img src="{{user.empleado.imagen_rfc.url}}" height="165" width="165"></a>
+
+                        <a href="{{user.empleado.imagen_sat.url}}" title="SAT" data-gallery=""><img src="{{user.empleado.imagen_sat.url}}" height="165" width="165"></a>
+
+                        <a href="{{user.empleado.imagen_infonavit.url}}" title="infonavit" data-gallery=""><img src="{{user.empleado.imagen_infonavit.url}}" height="165" width="165"></a>
+
+                        <a href="{{user.empleado.imagen_imss.url}}" title="IMSS" data-gallery=""><img src="{{user.empleado.imagen_imss.url}}" height="165" width="165"></a>
 
                         <div id="blueimp-gallery" class="blueimp-gallery">
                             <div class="slides"></div>
@@ -1064,8 +1070,8 @@
                          </span>
                     </div>
                     <div class="col-lg-12">
-                        <a class="btn btn-success btn-rounded" href="{% url 'rechaza1' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Editar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                        <a class="btn btn-primary btn-rounded" href="{% url 'confirma1' %}">&nbsp;&nbsp;Confirmar&nbsp;&nbsp;</a>
+                        <a class="btn btn-success btn-rounded" href="{% url 'rechaza2' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Editar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                        <a class="btn btn-primary btn-rounded" href="{% url 'confirma2' %}">&nbsp;&nbsp;Confirmar&nbsp;&nbsp;</a>
                     </div>
                     {%else%}
                     <div class="col-lg-12">
