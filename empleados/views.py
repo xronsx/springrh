@@ -290,3 +290,9 @@ def confirma_etapa_2(request, template_name = "dashboard/dashboard.html"):
 	except:
 		pass
 	return home(request)
+# ========= FIN ETAPA 2 ==========
+
+# ========= INICIO ETAPA 3 ==========
+@login_required(login_url = '/login/')
+def etapa_3(request, template_name = "empleados/etapa_3.html"):
+	return render(request, template_name, locals(),)

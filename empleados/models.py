@@ -72,4 +72,4 @@ class LicenciasConducir(models.Model):
 	licencia = models.CharField(max_length=600, unique=True)
 
 	def __str__(self):
-		return str ((self.user.user.first_name)+" "+(self.user.user.last_name)+" "+(self.pais.pais))
+		return str ((self.user.user.first_name)+" "+(self.user.user.last_name))
