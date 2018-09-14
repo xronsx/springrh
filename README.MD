@@ -1,5 +1,5 @@
-OCR en Placas Vehiculares 
-=========================
+SPRINGRRHH - CONTROL DE DOCUMENTACIÓN DE PERSONAL 
+=================================================
 
 Python 3+
 
