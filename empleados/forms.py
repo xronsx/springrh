@@ -9,6 +9,11 @@ from django.conf import settings
 from django.forms import ModelChoiceField, ModelMultipleChoiceField
 from django.core.files import File
 from django.utils.safestring import mark_safe
+from django.forms import extras
+from django.contrib.admin import widgets
+import datetime
+
+years_to_display = range(datetime.datetime.now().year - 100, datetime.datetime.now().year)
 
 class Formulario1(forms.Form):
 	apellido_paterno = forms.CharField(label = 'apellido_paterno', required = True, widget = forms.TextInput(attrs={'class': 'form-control'}))
@@ -71,6 +76,52 @@ class Formulario_etapa_2(forms.Form):
 	img_licencia = forms.FileField(label='img_licencia', required = False)
 	def __init__(self, *args, **kwargs):
 		super(Formulario_etapa_2, self).__init__(*args, **kwargs)
+		# Errores predeterminados definidos en el modelo este disparará errores para campo requerido, unico, invalido y con caracterers faltantes
+		for field in self.fields.values():
+			field.error_messages = {'required':'Ingrese {fieldname}'.format(
+				fieldname=field.label), 'unique':'{fieldname} registrada en el sistema'.format(
+				fieldname=field.label), 'invalid':'Valor Inválido'.format(
+				fieldname=field.label), 'min_length':'Realice completacion de campo {fieldname}'.format(
+				fieldname=field.label)}
+
+class FormConyugue(forms.ModelForm):
+	def __init__(self, *args, **kwargs):
+		super(FormConyugue, self).__init__(*args, **kwargs)
+		# change a widget attribute:
+		self.fields['acta'].widget.attrs["class"] = 'form-control'
+		self.fields['nombre'].widget.attrs["class"] = 'form-control'
+		self.fields['apellido_paterno'].widget.attrs["class"] = 'form-control'
+		self.fields['apellido_materno'].widget.attrs["class"] = 'form-control'
+		self.fields['fecha_nacimiento'].widget.attrs["class"] = 'form-control'
+		self.fields['fecha_nacimiento'].widget.initial = timezone.now()
+		self.fields['profesion'].widget.attrs["class"] = 'form-control'
+		self.fields['tlf'].widget.attrs["class"] = 'form-control'
+		self.fields['tlf'].widget.attrs["data-mask"] = '(99) 9999-9999)'
+		self.fields['email'].widget.attrs["class"] = 'form-control'
+		self.fields['lugar_de_trabajo'].widget.attrs["class"] = 'form-control'
+		self.fields['email_trabajo'].widget.attrs["class"] = 'form-control'
+		# REQUIRED
+		self.fields['acta'].required = False
+		self.fields['nombre'].required = False
+		self.fields['apellido_paterno'].required = False
+		self.fields['apellido_materno'].required = False
+		self.fields['fecha_nacimiento'].required = False
+		self.fields['profesion'].required = False
+		self.fields['tlf'].required = False
+		self.fields['email'].required = False
+	class Meta:
+		model = Conyugue
+		fields = ('acta', 'nombre', 'apellido_paterno', 'apellido_materno', 'fecha_nacimiento', 'profesion', 'lugar_de_trabajo', 'tlf', 'email', 'email_trabajo',)
+		widgets = {
+            'lugar_de_trabajo': forms.Textarea(attrs={'class': 'form-control', 'rows': '5'}),
+            'fecha_nacimiento': forms.SelectDateWidget(years=years_to_display)
+        }
+
+class EstadoCivil(forms.Form):
+	estado_civil = forms.ChoiceField(label = 'estado_civil', required = True, choices=ESTADO_CIVIL, initial=Soltero, widget = forms.RadioSelect(attrs={'onclick':'javascript:yesnoCheck();'}))
+
+	def __init__(self, *args, **kwargs):
+		super(EstadoCivil, self).__init__(*args, **kwargs)
 		# Errores predeterminados definidos en el modelo este disparará errores para campo requerido, unico, invalido y con caracterers faltantes
 		for field in self.fields.values():
 			field.error_messages = {'required':'Ingrese {fieldname}'.format(

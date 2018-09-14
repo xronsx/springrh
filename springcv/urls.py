@@ -39,6 +39,8 @@ extra_patterns2 = [
     url(r'^confirma2', empleados_views.confirma_etapa_2, name = 'confirma2'),
     # ETAPA 3
     url(r'^etapa-3', empleados_views.etapa_3, name = 'etapa-3'),
+    url(r'^rechaza3', empleados_views.rechaza_etapa_3, name = 'rechaza3'),
+    url(r'^confirma3', empleados_views.confirma_etapa_3, name = 'confirma3'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns = [

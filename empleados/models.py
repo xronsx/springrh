@@ -43,6 +43,8 @@ class Empleado(models.Model):
 	imagen_infonavit = models.ImageField(upload_to = 'infonavits/', blank = True, null = True)
 	imss = models.IntegerField(blank = True, null = True)
 	imagen_imss = models.ImageField(upload_to = 'imss/', blank = True, null = True)
+	# ETAPA 3
+	estado_civil = models.CharField(max_length=600, blank = True, null = True)
 
 	def __str__(self):
 		return str ((self.user.first_name)+" "+(self.user.last_name))
@@ -73,3 +75,19 @@ class LicenciasConducir(models.Model):
 
 	def __str__(self):
 		return str ((self.user.user.first_name)+" "+(self.user.user.last_name))
+
+class Conyugue(models.Model):
+	user = models.ForeignKey(Empleado, related_name="user_de_conyugue")
+	acta = models.ImageField('Acta de Matrimonio / Unión Libre',upload_to = 'acta_matrimonio/')
+	nombre = models.CharField('Nombre del conyugue', max_length=600)
+	apellido_paterno = models.CharField('Apellido paterno del conyugue', max_length=600)
+	apellido_materno = models.CharField('Apellido materno del conyugue', max_length=600)
+	fecha_nacimiento = models.DateTimeField('Fecha de nacimiento del conyugue', auto_now_add = False)
+	profesion = models.CharField(max_length=600)
+	tlf = models.CharField(max_length=255)
+	email = models.CharField(max_length=600)
+	email_trabajo = models.CharField(max_length=600, blank = True, null = True)
+	lugar_de_trabajo = models.CharField(max_length=600, blank = True, null = True)
+
+	def __str__(self):
+		return str ((self.nombre)+" "+(self.apellido_paterno)+" "+(self.apellido_materno))

@@ -1,6 +1,8 @@
 {% extends 'tags/empty_page.html' %}
 {% load staticfiles %}
 {% load querys %}
+{% load i18n %}
+{% load static  %}
 
 {% block head %}
 
@@ -8,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>SpringRH | Etapa 3</title>
+
 
     <link rel="icon" type="image/png" href="{% static 'img/icono-springlabs.png' %}" />
 
@@ -449,6 +452,21 @@
 
     </script>
 
+        <script type="text/javascript">
+
+    function yesnoCheck() {
+        if (document.getElementById('id_estado_civil_1').checked) {
+            document.getElementById('visa_1').style.display = 'block';
+        }
+        else if (document.getElementById('id_estado_civil_2').checked) {
+            document.getElementById('visa_1').style.display = 'block';
+        }
+        else{
+            document.getElementById('visa_1').style.display = 'none';
+        }
+    }
+    </script>
+
 {% endblock scripts %}
 
 {% block menu_lateral_header %}
@@ -476,7 +494,7 @@
 {% block contenido_header %}
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
-            <h2><strong>ETAPA 3</strong> Condición Social</h2>
+            <h2><strong>ETAPA 3</strong> Estado Civil</h2>
             <ol class="breadcrumb">
                 <li>
                     <a href="{% url 'home' %}">Inicio</a>
@@ -490,5 +508,250 @@
 {% endblock contenido_header %}
 
 {% block contenido %}
+
+    <div class="wrapper wrapper-content animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+
+            {%if form.visa_1.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Visa 1: </strong> {{ form.visa_1.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.visa_2.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Visa 2: </strong> {{ form.visa_2.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.visa_3.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Visa 3: </strong> {{ form.visa_3.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.visa_4.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Visa 4: </strong> {{ form.visa_4.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.visa_5.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Visa 5: </strong> {{ form.visa_5.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.vigencia_visa_1.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Vigencia visa 1: </strong> {{ form.vigencia_visa_1.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.vigencia_visa_2.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Vigencia visa 2: </strong> {{ form.vigencia_visa_2.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.vigencia_visa_3.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Vigencia visa 3: </strong> {{ form.vigencia_visa_3.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.vigencia_visa_4.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Vigencia visa 4: </strong> {{ form.vigencia_visa_4.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.vigencia_visa_5.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Vigencia visa 5: </strong> {{ form.vigencia_visa_5.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.img_visa_1.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Imagen visa 1: </strong> {{ form.img_visa_1.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.img_visa_2.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Imagen visa 2: </strong> {{ form.img_visa_2.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.img_visa_3.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Imagen visa 3: </strong> {{ form.img_visa_3.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.img_visa_4.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Imagen visa 4: </strong> {{ form.img_visa_4.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.img_visa_5.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Imagen visa 5: </strong> {{ form.img_visa_5.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.curp.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>CURP: </strong> {{ form.curp.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.imagen_curp.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Imagen CURP: </strong> {{ form.imagen_curp.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.rfc.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>RFC: </strong> {{ form.rfc.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.imagen_rfc.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Imagen RFC: </strong> {{ form.imagen_rfc.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.sat.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>SAT: </strong> {{ form.sat.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.imagen_sat.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Imagen SAT: </strong> {{ form.imagen_sat.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.infonavit.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>INFONAVIT: </strong> {{ form.infonavit.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.imagen_infonavit.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Imagen INFONAVIT: </strong> {{ form.imagen_infonavit.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.imss.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>IMSS: </strong> {{ form.imss.errors.as_text }}
+            </div>
+            {%endif%}
+            {%if form.imagen_imss.errors%}
+            <div class="alert alert-dismissable alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Imagen IMSS: </strong> {{ form.imagen_imss.errors.as_text }}
+            </div>
+            {%endif%}
+
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <i class="fa fa-vcard-o"></i> <strong>Sección 1</strong>
+                    </div>
+                    <div class="panel-body">
+
+                        <!-- ######################################## INICIO DEL FORMULARIO ######################################## -->
+                        <form class="form-horizontal" method="post" role="form" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% if empleado.status == 4 %}
+                            <label>Estado Civil</label>
+                            {{ formEstadoCivil.estado_civil }}
+                            <div id="visa_1" style="display:none">
+                            {{ formConyugue.as_p }}
+                            </div>
+                        {% else %}
+                            <strong>Estado civil: </strong>{{empleado.estado_civil}}<br>
+                            {% if conyugue_saved %}
+                                <strong>Cónyugue: </strong>
+                                {{conyugue_saved.nombre}}
+                                {{conyugue_saved.apellido_paterno}}
+                                {{conyugue_saved.apellido_materno}}<br>
+                                <strong>Fecha de nacimiento: </strong>
+                                {{conyugue_saved.fecha_nacimiento|date:"d M Y"}}<br>
+                                <strong>Profesión: </strong>
+                                {{conyugue_saved.profesion}}<br>
+                                <strong>Teléfono: </strong>
+                                {{conyugue_saved.tlf}}<br>
+                                <strong>Email: </strong>
+                                {{conyugue_saved.email}}<br>
+                                <strong>Email del trabajo: </strong>
+                                {{conyugue_saved.email_trabajo}}<br>
+                                <strong>Lugar de trabajo: </strong>
+                                {{conyugue_saved.lugar_de_trabajo}}<br>
+                            {% endif %}
+                        {% endif %}
+                            
+                    </div>
+                </div>
+
+                {% if empleado.status == 5 %}
+
+                    <div class="lightBoxGallery">
+
+                    <div>
+
+                     {% if conyugue_saved %}
+
+                        <a href="{{conyugue_saved.acta.url}}" title="ACTA DE MATRIMONIO / UNIÓN LIBRE" data-gallery=""><img src="{{conyugue_saved.acta.url}}" height="165" width="165"></a>
+
+                        <div id="blueimp-gallery" class="blueimp-gallery">
+                            <div class="slides"></div>
+                            <h3 class="title"></h3>
+                            <a class="prev">‹</a>
+                            <a class="next">›</a>
+                            <a class="close">×</a>
+                            <a class="play-pause"></a>
+                            <ol class="indicator"></ol>
+                        </div>
+
+                    {% endif %}
+
+                    </div>
+
+                <div class="col-lg-12">
+                     <span>
+                        <br>
+                     </span>
+                </div>
+                <div class="col-lg-12">
+                    <a class="btn btn-success btn-rounded" href="{% url 'rechaza3' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Editar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="btn btn-primary btn-rounded" href="{% url 'confirma3' %}">&nbsp;&nbsp;Confirmar&nbsp;&nbsp;</a>
+                </div>
+                {%else%}
+                <div class="col-lg-12">
+                    <button type="submit" class="btn btn-block btn-rounded btn-primary">Aceptar</button>
+                </div>
+                {%endif%}
+                <div class="col-lg-12">
+                     <span>
+                        <br>
+                     </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 {% endblock contenido %}

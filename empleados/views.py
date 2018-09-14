@@ -295,4 +295,63 @@ def confirma_etapa_2(request, template_name = "dashboard/dashboard.html"):
 # ========= INICIO ETAPA 3 ==========
 @login_required(login_url = '/login/')
 def etapa_3(request, template_name = "empleados/etapa_3.html"):
+	usuario = request.user
+	empleado = Empleado.objects.get(user = request.user)
+	if request.method == 'POST':
+		formEstadoCivil = EstadoCivil(request.POST)
+		if formEstadoCivil.is_valid():
+			estadocivil = formEstadoCivil.cleaned_data['estado_civil']
+			empleado.estado_civil = estadocivil
+			empleado.save()
+		if estadocivil != 'Soltero(a)' and estadocivil != 'Viudo(a)':
+			formConyugue = FormConyugue(request.POST, request.FILES)
+			if formConyugue.is_valid():
+				conyugue = formConyugue.save(commit=False)
+				conyugue.user = empleado
+				conyugue.save()
+				conyugue_saved = Conyugue.objects.get(user = empleado)
+				try:
+					if conyugue_saved.nombre == '':
+						conyugue_saved.delete()
+				except:
+					pass
+			else:
+				formConyugue.errors
+				print(formConyugue.errors)
+		formConyugue = FormConyugue()
+		formEstadoCivil = EstadoCivil()
+		empleado.status = 5
+		empleado.save()
+	else:
+		formConyugue = FormConyugue()
+		formEstadoCivil = EstadoCivil()
+		try:
+			conyugue_saved = Conyugue.objects.get(user = empleado)
+		except:
+			pass
 	return render(request, template_name, locals(),)
+
+@login_required(login_url = '/login/')
+def rechaza_etapa_3(request, template_name = "empleados/etapa_3.html"):
+	usuario = request.user
+	try:
+		empleado = Empleado.objects.get(user = usuario.pk)
+		empleado.status = 4
+		empleado.save()
+		if Conyugue.objects.filter(user = empleado).exists():
+			conyugue_saved = Conyugue.objects.filter(user = empleado)
+			conyugue_saved.delete()
+	except:
+		pass
+	return etapa_3(request)
+
+@login_required(login_url = '/login/')
+def confirma_etapa_3(request, template_name = "dashboard/dashboard.html"):
+	usuario = request.user
+	try:
+		empleado = Empleado.objects.get(user = usuario.pk)
+		empleado.status = 6
+		empleado.save()
+	except:
+		pass
+	return home(request)
