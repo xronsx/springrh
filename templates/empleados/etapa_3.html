@@ -464,6 +464,27 @@
         else{
             document.getElementById('visa_1').style.display = 'none';
         }
+
+        if (document.getElementById('id_SiNo_0').checked) {
+
+            document.getElementById('Si').style.display = 'none';
+        }
+        else
+        {
+            document.getElementById('Si').style.display = 'block';
+        }
+
+        if (document.getElementById('id_permiso_trabajo').checked) {
+
+            document.getElementById('id_solicitud_permiso_trabajo').style.display = 'none';
+            document.getElementById('id_solicitud_permiso_trabajo').checked = false;
+        }
+        else
+        {
+            document.getElementById('id_solicitud_permiso_trabajo').style.display = 'block';
+        }
+
+
     }
     </script>
 
@@ -678,7 +699,7 @@
                             <label>Estado Civil</label>
                             {{ formEstadoCivil.estado_civil }}
                             <div id="visa_1" style="display:none">
-                            {{ formConyugue.as_p }}
+                                {{ formConyugue.as_p }}
                             </div>
                         {% else %}
                             <strong>Estado civil: </strong>{{empleado.estado_civil}}<br>
@@ -702,6 +723,54 @@
                             {% endif %}
                         {% endif %}
                             
+                    </div>
+                </div>
+
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <i class="fa fa-male"></i> <strong>Sección 2</strong>
+                    </div>
+                    <div class="panel-body">
+
+                    {% if empleado.status == 5 %}
+
+                        <label>Extranjero: </label>
+                        {% if preguntas_saved %}
+                            Si
+                            <br>
+                            <label>Fecha de llegada a México: </label> {{preguntas_saved.fecha_llegada}}<br>
+                            <label>Posee permiso de trabajo: </label> 
+                            {% if preguntas_saved.permiso_trabajo %}
+                                Si
+                            {% else %}
+                                No
+                            {% endif %}
+                            <br>
+                            {% if preguntas_saved.permiso_trabajo %}
+                            {% else %}
+                                <label>Solicitó ya el permiso de trabajo: </label> 
+                                {% if preguntas_saved.solicitud_permiso_trabajo %}
+                                    Si
+                                {% else %}
+                                    No
+                                {% endif %}
+                            <br>
+                            {% endif %}
+                        {% else %}
+                            No
+                        {% endif %}
+
+                    {% else %}
+
+                            <label>Extranjero:</label>  
+                            {{ formSiNo.SiNo }}
+
+                        <div id="Si" style="display:none">
+                            {{ formPreguntas.as_p }}
+                        </div>
+
+                    {% endif %}
                     </div>
                 </div>
 

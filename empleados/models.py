@@ -91,3 +91,13 @@ class Conyugue(models.Model):
 
 	def __str__(self):
 		return str ((self.nombre)+" "+(self.apellido_paterno)+" "+(self.apellido_materno))
+
+class Preguntas(models.Model):
+	user = models.ForeignKey(Empleado, related_name="user_de_preguntas")
+	extranjero = models.BooleanField('¿Es Extranjero?',default=False)
+	fecha_llegada = models.DateTimeField('fecha de llegada al país', auto_now_add = False)
+	permiso_trabajo = models.BooleanField('¿Tiene permiso de trabajo?',default=False)
+	solicitud_permiso_trabajo = models.BooleanField('¿Ya ha solicitado el permiso de trabajo?',default=False)
+
+	def __str__(self):
+		return str ((self.user.user.first_name)+" "+(self.user.user.last_name))

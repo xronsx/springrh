@@ -11,6 +11,7 @@ from .models import *
 from .forms import *
 from dashboard.views import *
 from .metodos import *
+from datetime import datetime
 # Create your views here.
 
 # ========= INICIO ETAPA 1 ==========
@@ -318,15 +319,38 @@ def etapa_3(request, template_name = "empleados/etapa_3.html"):
 			else:
 				formConyugue.errors
 				print(formConyugue.errors)
+		formSiNo = ExtranjeroSiNo(request.POST)
+		if formSiNo.is_valid():
+			extranjero = request.POST['SiNo']
+			if extranjero == 'Si':
+				extranjero = True
+			else:
+				extranjero = False
+			if extranjero == True:
+				formPreguntas = PreguntasEtapa3(request.POST)
+				if formPreguntas.is_valid():
+					obj_preguntas = formPreguntas.save(commit=False)
+					obj_preguntas.extranjero = extranjero
+					obj_preguntas.user = empleado
+					obj_preguntas.save()
+					preguntas_saved = Preguntas.objects.get(user = empleado)
 		formConyugue = FormConyugue()
 		formEstadoCivil = EstadoCivil()
+		formPreguntas = PreguntasEtapa3()
+		formSiNo = ExtranjeroSiNo()
 		empleado.status = 5
 		empleado.save()
 	else:
 		formConyugue = FormConyugue()
 		formEstadoCivil = EstadoCivil()
+		formPreguntas = PreguntasEtapa3()
+		formSiNo = ExtranjeroSiNo()
 		try:
 			conyugue_saved = Conyugue.objects.get(user = empleado)
+		except:
+			pass
+		try:
+			preguntas_saved = Preguntas.objects.get(user = empleado)
 		except:
 			pass
 	return render(request, template_name, locals(),)
@@ -341,6 +365,15 @@ def rechaza_etapa_3(request, template_name = "empleados/etapa_3.html"):
 		if Conyugue.objects.filter(user = empleado).exists():
 			conyugue_saved = Conyugue.objects.filter(user = empleado)
 			conyugue_saved.delete()
+	except:
+		pass
+	try:
+		empleado = Empleado.objects.get(user = usuario.pk)
+		empleado.status = 4
+		empleado.save()
+		if Preguntas.objects.filter(user = empleado).exists():
+			preguntas_saved = Preguntas.objects.filter(user = empleado).filter(user = empleado)
+			preguntas_saved.delete()
 	except:
 		pass
 	return etapa_3(request)

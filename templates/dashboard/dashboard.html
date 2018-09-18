@@ -138,9 +138,19 @@
             <a href="{% url 'etapa-3' %}">
             <button class="btn btn-success  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Etapa 3"><i class="fa fa-address-card-o" ></i></button>
             </a> 
+            {% elif etapa == 6 or etapa == 7 %}
 
+            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="left" title="Etapa 1, COMPLETADA"><i class="fa fa-user-circle"></i></button>
 
-             {% endif %}
+            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 2, COMPLETADA"><i class="fa fa-address-book" ></i></button>
+
+            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 3, COMPLETADA"><i class="fa fa-address-card-o" ></i></button>
+
+            <a href="">
+            <button class="btn btn-danger  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Etapa 4"><i class="fa fa-group" ></i></button>
+            </a> 
+
+            {% endif %}
 
         </div>
     </div>

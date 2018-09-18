@@ -114,7 +114,7 @@ class FormConyugue(forms.ModelForm):
 		fields = ('acta', 'nombre', 'apellido_paterno', 'apellido_materno', 'fecha_nacimiento', 'profesion', 'lugar_de_trabajo', 'tlf', 'email', 'email_trabajo',)
 		widgets = {
             'lugar_de_trabajo': forms.Textarea(attrs={'class': 'form-control', 'rows': '5'}),
-            'fecha_nacimiento': forms.SelectDateWidget(years=years_to_display)
+            'fecha_nacimiento': forms.SelectDateWidget(years=years_to_display),
         }
 
 class EstadoCivil(forms.Form):
@@ -122,6 +122,33 @@ class EstadoCivil(forms.Form):
 
 	def __init__(self, *args, **kwargs):
 		super(EstadoCivil, self).__init__(*args, **kwargs)
+		# Errores predeterminados definidos en el modelo este disparará errores para campo requerido, unico, invalido y con caracterers faltantes
+		for field in self.fields.values():
+			field.error_messages = {'required':'Ingrese {fieldname}'.format(
+				fieldname=field.label), 'unique':'{fieldname} registrada en el sistema'.format(
+				fieldname=field.label), 'invalid':'Valor Inválido'.format(
+				fieldname=field.label), 'min_length':'Realice completacion de campo {fieldname}'.format(
+				fieldname=field.label)}
+
+class PreguntasEtapa3(forms.ModelForm):
+	def __init__(self, *args, **kwargs):
+		super(PreguntasEtapa3, self).__init__(*args, **kwargs)
+
+		self.fields['fecha_llegada'].widget.attrs["class"] = 'form-control'
+
+	class Meta:
+		model = Preguntas
+		fields = ('fecha_llegada', 'permiso_trabajo', 'solicitud_permiso_trabajo',)
+		widgets = {
+			'fecha_llegada' : forms.SelectDateWidget(years=years_to_display),
+			'permiso_trabajo' : forms.CheckboxInput(attrs={'onclick':'javascript:yesnoCheck();'}),
+			'solicitud_permiso_trabajo' : forms.CheckboxInput(attrs={'style':'display:none;'}),
+		}
+
+class ExtranjeroSiNo(forms.Form):
+	SiNo = forms.ChoiceField(label = 'SiNo', required = True, choices=EXTRANJERO, initial=No, widget = forms.RadioSelect(attrs={'onclick':'javascript:yesnoCheck();'}))
+	def __init__(self, *args, **kwargs):
+		super(ExtranjeroSiNo, self).__init__(*args, **kwargs)
 		# Errores predeterminados definidos en el modelo este disparará errores para campo requerido, unico, invalido y con caracterers faltantes
 		for field in self.fields.values():
 			field.error_messages = {'required':'Ingrese {fieldname}'.format(
