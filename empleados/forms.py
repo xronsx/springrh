@@ -11,9 +11,10 @@ from django.core.files import File
 from django.utils.safestring import mark_safe
 from django.forms import extras
 from django.contrib.admin import widgets
+from django.forms import formset_factory
 import datetime
 
-years_to_display = range(datetime.datetime.now().year - 100, datetime.datetime.now().year)
+years_to_display = range(datetime.datetime.now().year - 100, datetime.datetime.now().year + 1)
 
 class Formulario1(forms.Form):
 	apellido_paterno = forms.CharField(label = 'apellido_paterno', required = True, widget = forms.TextInput(attrs={'class': 'form-control'}))
@@ -156,3 +157,37 @@ class ExtranjeroSiNo(forms.Form):
 				fieldname=field.label), 'invalid':'Valor Inválido'.format(
 				fieldname=field.label), 'min_length':'Realice completacion de campo {fieldname}'.format(
 				fieldname=field.label)}
+
+class numero_hijos(forms.Form):
+	cantidad = forms.IntegerField(label = 'Cantidad de hijos', initial=0, required = True, widget = forms.TextInput(attrs={'class': 'touchspin1', 'name':'demo1'}))
+	def __init__(self, *args, **kwargs):
+		super(numero_hijos, self).__init__(*args, **kwargs)
+		# Errores predeterminados definidos en el modelo este disparará errores para campo requerido, unico, invalido y con caracterers faltantes
+		for field in self.fields.values():
+			field.error_messages = {'required':'Ingrese {fieldname}'.format(
+				fieldname=field.label), 'unique':'{fieldname} registrada en el sistema'.format(
+				fieldname=field.label), 'invalid':'Valor Inválido'.format(
+				fieldname=field.label), 'min_length':'Realice completacion de campo {fieldname}'.format(
+				fieldname=field.label)}
+
+class FormHijos(forms.ModelForm):
+	def __init__(self, *args, **kwargs):
+		super(FormHijos, self).__init__(*args, **kwargs)
+		self.fields['nombre'].widget.attrs["class"] = 'form-control'
+		self.fields['apellido_paterno'].widget.attrs["class"] = 'form-control'
+		self.fields['apellido_materno'].widget.attrs["class"] = 'form-control'
+		self.fields['fecha_nacimiento'].widget.attrs["class"] = 'form-control'
+		# REQUIRED
+		self.fields['nombre'].widget.attrs["required"] = 'true'
+		self.fields['apellido_paterno'].widget.attrs["required"] = 'true'
+		self.fields['apellido_materno'].widget.attrs["required"] = 'true'
+		self.fields['fecha_nacimiento'].widget.attrs["required"] = 'true'
+		self.fields['edad'].widget.attrs["required"] = 'true'
+
+	class Meta:
+		model = Hijo
+		fields = ('nombre', 'apellido_paterno', 'apellido_materno', 'fecha_nacimiento', 'edad',)
+		widgets = {
+			'fecha_nacimiento' : forms.SelectDateWidget(years=years_to_display),
+			'edad' : forms.TextInput(attrs={'class': 'touchspin1', 'name':'demo1'}),
+		}

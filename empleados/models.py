@@ -45,6 +45,8 @@ class Empleado(models.Model):
 	imagen_imss = models.ImageField(upload_to = 'imss/', blank = True, null = True)
 	# ETAPA 3
 	estado_civil = models.CharField(max_length=600, blank = True, null = True)
+	# ESTAPA 4
+	numero_hijos = models.IntegerField(blank = False, default=0)
 
 	def __str__(self):
 		return str ((self.user.first_name)+" "+(self.user.last_name))
@@ -99,5 +101,15 @@ class Preguntas(models.Model):
 	permiso_trabajo = models.BooleanField('¿Tiene permiso de trabajo?',default=False)
 	solicitud_permiso_trabajo = models.BooleanField('¿Ya ha solicitado el permiso de trabajo?',default=False)
 
+	def __str__(self):
+		return str ((self.user.user.first_name)+" "+(self.user.user.last_name))
+
+class Hijo(models.Model):
+	user = models.ForeignKey(Empleado, related_name="user_de_hijos")
+	nombre = models.CharField('Nombre', max_length=600) 
+	apellido_paterno = models.CharField('Apellido paterno', max_length=600)
+	apellido_materno = models.CharField('Apellido materno', max_length=600)
+	fecha_nacimiento = models.DateTimeField('Fecha de nacimiento', auto_now_add = False)
+	edad = models.IntegerField('Edad')
 	def __str__(self):
 		return str ((self.user.user.first_name)+" "+(self.user.user.last_name))

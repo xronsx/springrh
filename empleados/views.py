@@ -12,6 +12,7 @@ from .forms import *
 from dashboard.views import *
 from .metodos import *
 from datetime import datetime
+from django.forms import formset_factory
 # Create your views here.
 
 # ========= INICIO ETAPA 1 ==========
@@ -388,3 +389,40 @@ def confirma_etapa_3(request, template_name = "dashboard/dashboard.html"):
 	except:
 		pass
 	return home(request)
+# ========= FIN ETAPA 3 ==========
+
+# ========= INICIO ETAPA 4 ==========
+@login_required(login_url = '/login/')
+def etapa_4(request, template_name = "empleados/etapa_4.html"):
+	usuario = request.user
+	tiene_hijo = False
+	empleado = Empleado.objects.get(user = usuario.pk)
+	if request.method == 'POST':
+		try:
+			formCantidadHijos = numero_hijos(request.POST)
+			HijoFormSet = formset_factory(FormHijos, extra = empleado.numero_hijos)
+			formsetHijos = HijoFormSet(request.POST)
+			if formCantidadHijos.is_valid():
+				empleado.numero_hijos = formCantidadHijos.cleaned_data['cantidad']
+				empleado.save()
+			if formsetHijos.is_valid():
+				for form in formsetHijos:
+					form = form.save(commit=False)
+					form.user = empleado
+					form.save()
+					print("ENTRO")
+			if empleado.numero_hijos > 0:
+				tiene_hijo = True
+			else:
+				tiene_hijo = False
+				formCantidadHijos = numero_hijos()
+		except:
+			pass
+		return HttpResponseRedirect('/etapa-4/')
+	else:
+		if empleado.numero_hijos > 0:
+			tiene_hijos = True
+			HijoFormSet = formset_factory(FormHijos, extra = empleado.numero_hijos)
+			formset = HijoFormSet()
+		formCantidadHijos = numero_hijos()
+	return render(request, template_name, locals(),)
