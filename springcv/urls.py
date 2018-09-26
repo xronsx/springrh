@@ -41,8 +41,12 @@ extra_patterns2 = [
     url(r'^etapa-3', empleados_views.etapa_3, name = 'etapa-3'),
     url(r'^rechaza3', empleados_views.rechaza_etapa_3, name = 'rechaza3'),
     url(r'^confirma3', empleados_views.confirma_etapa_3, name = 'confirma3'),
-    # ETAPA 3
+    # ETAPA 4
     url(r'^etapa-4', empleados_views.etapa_4, name = 'etapa-4'),
+    url(r'^rechaza4', empleados_views.rechaza_etapa_4, name = 'rechaza4'),
+    url(r'^confirma4', empleados_views.confirma_etapa_4, name = 'confirma4'),
+        # ETAPA 4
+    url(r'^etapa-5', empleados_views.etapa_5, name = 'etapa-5'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns = [
