@@ -462,35 +462,4 @@ def confirma_etapa_4(request, template_name = "dashboard/dashboard.html"):
 def etapa_5(request, template_name = "empleados/etapa_5.html"):
 	usuario = request.user
 	tiene_hijo = False
-	empleado = Empleado.objects.get(user = usuario.pk)
-	if request.method == 'POST':
-		try:
-			formCantidadHijos = numero_hijos(request.POST)
-			HijoFormSet = formset_factory(FormHijos, extra = empleado.numero_hijos)
-			formsetHijos = HijoFormSet(request.POST)
-			if formCantidadHijos.is_valid():
-				empleado.numero_hijos = formCantidadHijos.cleaned_data['cantidad']
-				empleado.status = 7
-				empleado.save()
-			if formsetHijos.is_valid():
-				for form in formsetHijos:
-					form = form.save(commit=False)
-					form.user = empleado
-					form.save()
-			if empleado.numero_hijos > 0:
-				tiene_hijo = True
-			else:
-				tiene_hijo = False
-				formCantidadHijos = numero_hijos()
-		except:
-			pass
-		return HttpResponseRedirect('/etapa-4/')
-	else:
-		if empleado.numero_hijos > 0:
-			tiene_hijos = True
-			if Hijo.objects.filter(user=empleado).exists():
-				hijos_registrados = Hijo.objects.filter(user=empleado)
-			HijoFormSet = formset_factory(FormHijos, extra = empleado.numero_hijos)
-			formset = HijoFormSet()
-		formCantidadHijos = numero_hijos()
 	return render(request, template_name, locals(),)
