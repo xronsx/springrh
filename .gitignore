@@ -10,5 +10,6 @@ migrations/
 settings.py
 db.sqlite3
 django
+.idea/
 
 # END OF FILE
