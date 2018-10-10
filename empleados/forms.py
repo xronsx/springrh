@@ -13,6 +13,7 @@ from django.forms import extras
 from django.contrib.admin import widgets
 from django.forms import formset_factory
 import datetime
+from .opciones import *
 
 years_to_display = range(datetime.datetime.now().year - 100, datetime.datetime.now().year + 1)
 
@@ -191,3 +192,14 @@ class FormHijos(forms.ModelForm):
 			'fecha_nacimiento' : forms.SelectDateWidget(years=years_to_display),
 			'edad' : forms.TextInput(attrs={'class': 'touchspin1', 'name':'demo1'}),
 		}
+
+class EstudiosForm(forms.ModelForm):
+    class Meta:
+        model = Estudio
+        exclude = ('user',)
+    def __init__(self, *args, **kwargs):
+        super(EstudiosForm, self).__init__(*args, **kwargs)
+        for campos in self.fields:
+            self.fields[campos].widget.attrs.update({'class': 'form-control'})
+
+

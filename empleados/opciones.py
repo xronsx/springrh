@@ -40,8 +40,22 @@ Soltero='Soltero(a)'
 UnionLibre='Unión Libre'
 Viudo='Viudo(a)'
 
+#Si No
 Si = 'Si'
 No = 'No'
+
+
+#Niveles de estudios
+Secundaria_completa = 'Secundaria Completa'
+Secundaria_trunca = 'Secundaria Trunca'
+Media = 'Educación Media Terminada'
+Superior = 'Educación Superior Terminada'
+Profesional = 'Profesional Titulado'
+Matesria = 'Profesional con Maestría'
+Doctorado = 'Profesional con Doctorado'
+media_en_curso = ''
+superior_en_curso = ''
+
 
 STATUS_CHOICES = (
 	(Aguascalientes,'Aguascalientes'),
@@ -97,4 +111,16 @@ years = (
 EXTRANJERO = (
 	(No,'No'),
 	(Si,'Si'),
+)
+
+NIVEL_ESTUDIOS = (
+	(Secundaria_completa, 'Secundaria Completa'),
+	(Secundaria_trunca, 'Secundaria Trunca'),
+	(Media, 'Educación Media Terminada'),
+	(Superior, 'Educación Superior Terminada'),
+	(Profesional, 'Profesional Titulado'),
+	(Matesria, 'Profesional con Maestría'),
+	(Doctorado, 'Profesional con Doctorado'),
+	(media_en_curso, 'Educación Media en curso'),
+	(superior_en_curso, 'Educación Superior en curso')
 )

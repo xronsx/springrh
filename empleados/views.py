@@ -460,6 +460,23 @@ def confirma_etapa_4(request, template_name = "dashboard/dashboard.html"):
 # ========= INICIO ETAPA 5 ==========
 @login_required(login_url = '/login/')
 def etapa_5(request, template_name = "empleados/etapa_5.html"):
-	usuario = request.user
-	tiene_hijo = False
-	return render(request, template_name, locals(),)
+    usuario = request.user
+    empleado = Empleado.objects.get(user=usuario.pk)
+    if request.method == 'POST':
+        try:
+            Formulario_estudios = EstudiosForm(request.POST, request.FILES)
+            if Formulario_estudios.is_valid():
+                Estudios = Formulario_estudios.save(commit=False)
+                Estudios.user = empleado
+                empleado.status = 9  # Estudios y niveles cargados
+                empleado.save()
+                Estudios.save()
+                # PARA 9
+                estudios = Estudio.objects.get(user = usuario.pk)
+        except:
+            print("Error al guardar datos")
+    else:
+        if Estudio.objects.filter(user = usuario.pk).exists():
+            estudios = Estudio.objects.get(user=usuario.pk)
+        Formulario = EstudiosForm()
+    return render(request, template_name, locals(),)

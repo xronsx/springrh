@@ -12,8 +12,24 @@
     <link rel="icon" type="image/png" href="{% static 'img/icono-springlabs.png' %}" />
 
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    
+
     <link href="{% static 'font-awesome/css/font-awesome.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/plugins/toastr/toastr.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'js/plugins/gritter/jquery.gritter.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/plugins/dropzone/basic.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/plugins/dropzone/dropzone.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/plugins/jasny/jasny-bootstrap.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/plugins/codemirror/codemirror.css' %}" rel="stylesheet">
 
     <link href="{% static 'css/plugins/iCheck/custom.css' %}" rel="stylesheet">
 
@@ -33,25 +49,9 @@
 
     <link href="{% static 'css/plugins/datapicker/datepicker3.css' %}" rel="stylesheet">
 
-    <link href="{% static 'css/plugins/ionRangeSlider/ion.rangeSlider.css' %}" rel="stylesheet">
-
-    <link href="{% static 'css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css' %}" rel="stylesheet">
-
     <link href="{% static 'css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css' %}" rel="stylesheet">
 
-    <link href="{% static 'css/plugins/clockpicker/clockpicker.css' %}" rel="stylesheet">
-
-    <link href="{% static 'css/plugins/daterangepicker/daterangepicker-bs3.css' %}" rel="stylesheet">
-
-    <link href="{% static 'css/plugins/select2/select2.min.css' %}" rel="stylesheet">
-
     <link href="{% static 'css/plugins/touchspin/jquery.bootstrap-touchspin.min.css' %}" rel="stylesheet">
-
-    <link href="{% static 'css/plugins/dualListbox/bootstrap-duallistbox.min.css' %}" rel="stylesheet">
-
-    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
-
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
     <link href="{% static 'css/plugins/blueimp/css/blueimp-gallery.min.css' %}" rel="stylesheet">
 
@@ -60,68 +60,61 @@
 
 {% block js %}
 
+
     <!-- Mainly scripts -->
     <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/plugins/metisMenu/jquery.metisMenu.js' %}"></script>
+    <script src="{% static 'js/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+    <!-- Peity -->
+    <script src="{% static 'js/plugins/peity/jquery.peity.min.js' %}"></script>
+    <script src="{% static 'js/demo/peity-demo.js' %}"></script>
 
     <!-- Custom and plugin javascript -->
     <script src="{% static 'js/inspinia.js' %}"></script>
+
     <script src="{% static 'js/plugins/pace/pace.min.js' %}"></script>
-    <script src="{% static 'js/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+    <!-- Sparkline -->
+    <script src="{% static 'js/plugins/sparkline/jquery.sparkline.min.js' %}"></script>
+
+    <!-- Sparkline demo data  -->
+    <script src="{% static 'js/demo/sparkline-demo.js' %}"></script>
+
+    <!-- Toastr -->
+    <script src="{% static 'js/plugins/toastr/toastr.min.js' %}"></script>
+
+    <!-- Jasny -->
+    <script src="{% static 'js/plugins/jasny/jasny-bootstrap.min.js' %}"></script>
+
+    <!-- DROPZONE -->
+    <script src="{% static 'js/plugins/dropzone/dropzone.js' %}"></script>
 
     <!-- Chosen -->
     <script src="{% static 'js/plugins/chosen/chosen.jquery.js' %}"></script>
 
-   <!-- JSKnob -->
-   <script src="{% static 'js/plugins/jsKnob/jquery.knob.js' %}"></script>
+    <!-- JSKnob -->
+    <script src="{% static 'js/plugins/jsKnob/jquery.knob.js' %}"></script>
 
-   <!-- Input Mask-->
-    <script src="{% static 'js/plugins/jasny/jasny-bootstrap.min.js' %}"></script>
+    <!-- Data picker -->
+    <script src="{% static 'js/plugins/datapicker/bootstrap-datepicker.js' %}"></script>
+    <script src="{% static 'js/plugins/datapicker/bootstrap-datepicker.es.min.js' %}"></script>
 
-   <!-- Data picker -->
-   <script src="{% static 'js/plugins/datapicker/bootstrap-datepicker.js' %}"></script>
+    <!-- NouSlider -->
+    <script src="{% static 'js/plugins/nouslider/jquery.nouislider.min.js' %}"></script>
 
-   <!-- NouSlider -->
-   <script src="{% static 'js/plugins/nouslider/jquery.nouislider.min.js' %}"></script>
-
-   <!-- Switchery -->
-   <script src="{% static 'js/plugins/switchery/switchery.js' %}"></script>
-
-    <!-- IonRangeSlider -->
-    <script src="{% static 'js/plugins/ionRangeSlider/ion.rangeSlider.min.js' %}"></script>
+    <!-- Switchery -->
+    <script src="{% static 'js/plugins/switchery/switchery.js' %}"></script>
 
     <!-- iCheck -->
     <script src="{% static 'js/plugins/iCheck/icheck.min.js' %}"></script>
-
-    <!-- MENU -->
-    <script src="{% static 'js/plugins/metisMenu/jquery.metisMenu.js' %}"></script>
-
-    <!-- Color picker -->
-    <script src="{% static 'js/plugins/colorpicker/bootstrap-colorpicker.min.js' %}"></script>
-
-    <!-- Clock picker -->
-    <script src="{% static 'js/plugins/clockpicker/clockpicker.js' %}"></script>
-
-    <!-- Image cropper -->
-    <script src="{% static 'js/plugins/cropper/cropper.min.js' %}"></script>
-
-    <!-- Date range use moment.js same as full calendar plugin -->
-    <script src="{% static 'js/plugins/fullcalendar/moment.min.js' %}"></script>
-
-    <!-- Date range picker -->
-    <script src="{% static 'js/plugins/daterangepicker/daterangepicker.js' %}"></script>
-
-    <!-- Select2 -->
-    <script src="{% static 'js/plugins/select2/select2.full.min.js' %}"></script>
 
     <!-- TouchSpin -->
     <script src="{% static 'js/plugins/touchspin/jquery.bootstrap-touchspin.min.js' %}"></script>
 
     <!-- Tags Input -->
     <script src="{% static 'js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js' %}"></script>
-
-    <!-- Dual Listbox -->
-    <script src="{% static 'js/plugins/dualListbox/jquery.bootstrap-duallistbox.js' %}"></script>
 
     <!-- blueimp gallery -->
     <script src="{% static 'js/plugins/blueimp/jquery.blueimp-gallery.min.js' %}"></script>
@@ -131,71 +124,9 @@
 
 {% block scripts %}
     <script>
+
+
         $(document).ready(function(){
-
-            $('.tagsinput').tagsinput({
-                tagClass: 'label label-primary'
-            });
-
-            var $image = $(".image-crop > img")
-            $($image).cropper({
-                aspectRatio: 1.618,
-                preview: ".img-preview",
-                done: function(data) {
-                    // Output the result data for cropping image.
-                }
-            });
-
-            var $inputImage = $("#inputImage");
-            if (window.FileReader) {
-                $inputImage.change(function() {
-                    var fileReader = new FileReader(),
-                            files = this.files,
-                            file;
-
-                    if (!files.length) {
-                        return;
-                    }
-
-                    file = files[0];
-
-                    if (/^image\/\w+$/.test(file.type)) {
-                        fileReader.readAsDataURL(file);
-                        fileReader.onload = function () {
-                            $inputImage.val("");
-                            $image.cropper("reset", true).cropper("replace", this.result);
-                        };
-                    } else {
-                        showMessage("Please choose an image file.");
-                    }
-                });
-            } else {
-                $inputImage.addClass("hide");
-            }
-
-            $("#download").click(function() {
-                window.open($image.cropper("getDataURL"));
-            });
-
-            $("#zoomIn").click(function() {
-                $image.cropper("zoom", 0.1);
-            });
-
-            $("#zoomOut").click(function() {
-                $image.cropper("zoom", -0.1);
-            });
-
-            $("#rotateLeft").click(function() {
-                $image.cropper("rotate", 45);
-            });
-
-            $("#rotateRight").click(function() {
-                $image.cropper("rotate", -45);
-            });
-
-            $("#setDrag").click(function() {
-                $image.cropper("setDragMode", "crop");
-            });
 
             $('#data_1 .input-group.date').datepicker({
                 language: "es",
@@ -203,127 +134,19 @@
                 keyboardNavigation: false,
                 forceParse: false,
                 calendarWeeks: true,
-                autoclose: true,
-                format: "dd/mm/yyyy"
+                autoclose: true
             });
 
             $('#data_2 .input-group.date').datepicker({
                 language: "es",
-                startView: 1,
                 todayBtn: "linked",
                 keyboardNavigation: false,
                 forceParse: false,
-                autoclose: true,
-                format: "dd/mm/yyyy"
-            });
-
-            $('#data_3 .input-group.date').datepicker({
-                language: "es",
-                startView: 2,
-                todayBtn: "linked",
-                keyboardNavigation: false,
-                forceParse: false,
-                autoclose: true,
-                format: "dd/mm/yyyy"
-            });
-
-            $('#data_4 .input-group.date').datepicker({
-                language: "es",
-                minViewMode: 1,
-                keyboardNavigation: false,
-                forceParse: false,
-                forceParse: false,
-                autoclose: true,
-                todayHighlight: true,
-                format: "dd/mm/yyyy"
-            });
-
-            $('#data_5 .input-daterange').datepicker({
-                keyboardNavigation: false,
-                forceParse: false,
+                calendarWeeks: true,
                 autoclose: true
             });
 
-            var elem = document.querySelector('.js-switch');
-            var switchery = new Switchery(elem, { color: '#1AB394' });
-
-            var elem_2 = document.querySelector('.js-switch_2');
-            var switchery_2 = new Switchery(elem_2, { color: '#ED5565' });
-
-            var elem_3 = document.querySelector('.js-switch_3');
-            var switchery_3 = new Switchery(elem_3, { color: '#1AB394' });
-
-            var elem_4 = document.querySelector('.js-switch_4');
-            var switchery_4 = new Switchery(elem_4, { color: '#f8ac59' });
-                switchery_4.disable();
-
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green'
-            });
-
-            $('.demo1').colorpicker();
-
-            var divStyle = $('.back-change')[0].style;
-            $('#demo_apidemo').colorpicker({
-                color: divStyle.backgroundColor
-            }).on('changeColor', function(ev) {
-                        divStyle.backgroundColor = ev.color.toHex();
-                    });
-
-            $('.clockpicker').clockpicker();
-
-            $('input[name="daterange"]').daterangepicker();
-
-            $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
-
-            $('#reportrange').daterangepicker({
-                format: 'MM/DD/YYYY',
-                startDate: moment().subtract(29, 'days'),
-                endDate: moment(),
-                minDate: '01/01/2012',
-                maxDate: '12/31/2015',
-                dateLimit: { days: 60 },
-                showDropdowns: true,
-                showWeekNumbers: true,
-                timePicker: false,
-                timePickerIncrement: 1,
-                timePicker12Hour: true,
-                ranges: {
-                    'Today': [moment(), moment()],
-                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                    'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                },
-                opens: 'right',
-                drops: 'down',
-                buttonClasses: ['btn', 'btn-sm'],
-                applyClass: 'btn-primary',
-                cancelClass: 'btn-default',
-                separator: ' to ',
-                locale: {
-                    applyLabel: 'Submit',
-                    cancelLabel: 'Cancel',
-                    fromLabel: 'From',
-                    toLabel: 'To',
-                    customRangeLabel: 'Custom',
-                    daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
-                    monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                    firstDay: 1
-                }
-            }, function(start, end, label) {
-                console.log(start.toISOString(), end.toISOString(), label);
-                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-            });
-
-            $(".select2_demo_1").select2();
-            $(".select2_demo_2").select2();
-            $(".select2_demo_3").select2({
-                placeholder: "Select a state",
-                allowClear: true
-            });
+            $('.chosen-select').chosen({width: "100%"});
 
 
             $(".touchspin1").TouchSpin({
@@ -349,101 +172,11 @@
                 buttonup_class: 'btn btn-white'
             });
 
-            $('.dual_select').bootstrapDualListbox({
-                selectorMinimalHeight: 160
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
             });
 
-
-        });
-
-        $('.chosen-select').chosen({width: "100%"});
-
-        $("#ionrange_1").ionRangeSlider({
-            min: 0,
-            max: 5000,
-            type: 'double',
-            prefix: "$",
-            maxPostfix: "+",
-            prettify: false,
-            hasGrid: true
-        });
-
-        $("#ionrange_2").ionRangeSlider({
-            min: 0,
-            max: 10,
-            type: 'single',
-            step: 0.1,
-            postfix: " carats",
-            prettify: false,
-            hasGrid: true
-        });
-
-        $("#ionrange_3").ionRangeSlider({
-            min: -50,
-            max: 50,
-            from: 0,
-            postfix: "°",
-            prettify: false,
-            hasGrid: true
-        });
-
-        $("#ionrange_4").ionRangeSlider({
-            values: [
-                "January", "February", "March",
-                "April", "May", "June",
-                "July", "August", "September",
-                "October", "November", "December"
-            ],
-            type: 'single',
-            hasGrid: true
-        });
-
-        $("#ionrange_5").ionRangeSlider({
-            min: 10000,
-            max: 100000,
-            step: 100,
-            postfix: " km",
-            from: 55000,
-            hideMinMax: true,
-            hideFromTo: false
-        });
-
-        $(".dial").knob();
-
-        var basic_slider = document.getElementById('basic_slider');
-
-        noUiSlider.create(basic_slider, {
-            start: 40,
-            behaviour: 'tap',
-            connect: 'upper',
-            range: {
-                'min':  20,
-                'max':  80
-            }
-        });
-
-        var range_slider = document.getElementById('range_slider');
-
-        noUiSlider.create(range_slider, {
-            start: [ 40, 60 ],
-            behaviour: 'drag',
-            connect: true,
-            range: {
-                'min':  20,
-                'max':  80
-            }
-        });
-
-        var drag_fixed = document.getElementById('drag-fixed');
-
-        noUiSlider.create(drag_fixed, {
-            start: [ 40, 60 ],
-            behaviour: 'drag-fixed',
-            connect: true,
-            range: {
-                'min':  20,
-                'max':  80
-            }
         });
 
 
@@ -545,162 +278,160 @@
 
 {% block contenido %}
 
-
     <div class="wrapper wrapper-content animated fadeIn">
         <div class="row">
             <div class="col-lg-12">
 
-            {%if form.visa_1.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Visa 1: </strong> {{ form.visa_1.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.visa_2.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Visa 2: </strong> {{ form.visa_2.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.visa_3.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Visa 3: </strong> {{ form.visa_3.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.visa_4.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Visa 4: </strong> {{ form.visa_4.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.visa_5.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Visa 5: </strong> {{ form.visa_5.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.vigencia_visa_1.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Vigencia visa 1: </strong> {{ form.vigencia_visa_1.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.vigencia_visa_2.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Vigencia visa 2: </strong> {{ form.vigencia_visa_2.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.vigencia_visa_3.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Vigencia visa 3: </strong> {{ form.vigencia_visa_3.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.vigencia_visa_4.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Vigencia visa 4: </strong> {{ form.vigencia_visa_4.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.vigencia_visa_5.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Vigencia visa 5: </strong> {{ form.vigencia_visa_5.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.img_visa_1.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Imagen visa 1: </strong> {{ form.img_visa_1.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.img_visa_2.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Imagen visa 2: </strong> {{ form.img_visa_2.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.img_visa_3.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Imagen visa 3: </strong> {{ form.img_visa_3.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.img_visa_4.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Imagen visa 4: </strong> {{ form.img_visa_4.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.img_visa_5.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Imagen visa 5: </strong> {{ form.img_visa_5.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.curp.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>CURP: </strong> {{ form.curp.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.imagen_curp.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Imagen CURP: </strong> {{ form.imagen_curp.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.rfc.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>RFC: </strong> {{ form.rfc.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.imagen_rfc.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Imagen RFC: </strong> {{ form.imagen_rfc.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.sat.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>SAT: </strong> {{ form.sat.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.imagen_sat.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Imagen SAT: </strong> {{ form.imagen_sat.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.infonavit.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>INFONAVIT: </strong> {{ form.infonavit.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.imagen_infonavit.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Imagen INFONAVIT: </strong> {{ form.imagen_infonavit.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.imss.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>IMSS: </strong> {{ form.imss.errors.as_text }}
-            </div>
-            {%endif%}
-            {%if form.imagen_imss.errors%}
-            <div class="alert alert-dismissable alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Imagen IMSS: </strong> {{ form.imagen_imss.errors.as_text }}
-            </div>
-            {%endif%}
-
+                {%if form.visa_1.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Visa 1: </strong> {{ form.visa_1.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.visa_2.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Visa 2: </strong> {{ form.visa_2.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.visa_3.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Visa 3: </strong> {{ form.visa_3.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.visa_4.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Visa 4: </strong> {{ form.visa_4.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.visa_5.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Visa 5: </strong> {{ form.visa_5.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.vigencia_visa_1.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Vigencia visa 1: </strong> {{ form.vigencia_visa_1.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.vigencia_visa_2.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Vigencia visa 2: </strong> {{ form.vigencia_visa_2.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.vigencia_visa_3.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Vigencia visa 3: </strong> {{ form.vigencia_visa_3.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.vigencia_visa_4.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Vigencia visa 4: </strong> {{ form.vigencia_visa_4.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.vigencia_visa_5.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Vigencia visa 5: </strong> {{ form.vigencia_visa_5.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.img_visa_1.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Imagen visa 1: </strong> {{ form.img_visa_1.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.img_visa_2.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Imagen visa 2: </strong> {{ form.img_visa_2.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.img_visa_3.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Imagen visa 3: </strong> {{ form.img_visa_3.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.img_visa_4.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Imagen visa 4: </strong> {{ form.img_visa_4.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.img_visa_5.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Imagen visa 5: </strong> {{ form.img_visa_5.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.curp.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>CURP: </strong> {{ form.curp.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.imagen_curp.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Imagen CURP: </strong> {{ form.imagen_curp.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.rfc.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>RFC: </strong> {{ form.rfc.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.imagen_rfc.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Imagen RFC: </strong> {{ form.imagen_rfc.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.sat.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>SAT: </strong> {{ form.sat.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.imagen_sat.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Imagen SAT: </strong> {{ form.imagen_sat.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.infonavit.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>INFONAVIT: </strong> {{ form.infonavit.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.imagen_infonavit.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Imagen INFONAVIT: </strong> {{ form.imagen_infonavit.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.imss.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>IMSS: </strong> {{ form.imss.errors.as_text }}
+                </div>
+                {%endif%}
+                {%if form.imagen_imss.errors%}
+                <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Imagen IMSS: </strong> {{ form.imagen_imss.errors.as_text }}
+                </div>
+                {%endif%}
 
                 <div class="panel panel-warning">
                     <div class="panel-heading">
@@ -753,260 +484,262 @@
                         
                         </br>
                         {% endif %}
-                        <!-- ######################################## INICIO DEL FORMULARIO ######################################## -->
-                        <form class="form-horizontal" method="post" role="form" action="" enctype="multipart/form-data">
-                        {% csrf_token %}
+<!-- ######################################## INICIO DEL FORMULARIO ######################################## -->
+<form class="form-horizontal" method="post" role="form" action="" enctype="multipart/form-data">
+{% csrf_token %}
 
-                            <!-- INICIO VISA 1 -->
-                            <div id="visa_1" style="display:none">
-                                <label>Visa 1</label>
-                                {{ form.visa_1}}
-                                <br>
-                                <div class="form-group" id="data_1">
-                                    <div class="col-lg-12">
-                                        <label>Vigente hasta</label>
-                                        <div class="input-group date">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><!-- <input type="text" class="form-control"> -->
-                                            {{ form.vigencia_visa_1 }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <label>Imagen visa 1</label>
-                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                <div class="form-control" data-trigger="fileinput">
-                                    <i class="glyphicon glyphicon-file fileinput-exists"></i> 
-                                    <span class="fileinput-filename"></span>
-                                </div>
-                                <span class="input-group-addon btn btn-default btn-file">
-                                    <span class="fileinput-new">Seleccionar</span>
-                                    <span class="fileinput-exists">Cambiar</span>
-                                    <!-- <input type="file" name="..."> -->
-                                    {{ form.img_visa_1 }}
-                                </span>
-                                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
-                                </div>
-                                <br>
-                            </div>
-                            <!-- FIN VISA 1 -->
-
-                            <!-- INICIO VISA 2 -->
-                            <div id="visa_2" style="display:none">
-                                <label>Visa 2</label>
-                                {{ form.visa_2}}
-                                <br>
-                                <div class="form-group" id="data_1">
-                                    <div class="col-lg-12">
-                                        <label>Vigente hasta</label>
-                                        <div class="input-group date">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><!-- <input type="text" class="form-control"> -->
-                                            {{ form.vigencia_visa_2 }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <label>Imagen visa 2</label>
-                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                <div class="form-control" data-trigger="fileinput">
-                                    <i class="glyphicon glyphicon-file fileinput-exists"></i> 
-                                    <span class="fileinput-filename"></span>
-                                </div>
-                                <span class="input-group-addon btn btn-default btn-file">
-                                    <span class="fileinput-new">Seleccionar</span>
-                                    <span class="fileinput-exists">Cambiar</span>
-                                    <!-- <input type="file" name="..."> -->
-                                    {{ form.img_visa_2 }}
-                                </span>
-                                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
-                                </div>
-                                <br>
-                            </div>
-                            <!-- FIN VISA 2 -->
-
-                            <!-- INICIO VISA 3 -->
-                            <div id="visa_3" style="display:none">
-                                <label>Visa 3</label>
-                                {{ form.visa_3}}
-                                <br>
-                                <div class="form-group" id="data_1">
-                                    <div class="col-lg-12">
-                                        <label>Vigente hasta</label>
-                                        <div class="input-group date">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><!-- <input type="text" class="form-control"> -->
-                                            {{ form.vigencia_visa_3 }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <label>Imagen visa 1</label>
-                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                <div class="form-control" data-trigger="fileinput">
-                                    <i class="glyphicon glyphicon-file fileinput-exists"></i> 
-                                    <span class="fileinput-filename"></span>
-                                </div>
-                                <span class="input-group-addon btn btn-default btn-file">
-                                    <span class="fileinput-new">Seleccionar</span>
-                                    <span class="fileinput-exists">Cambiar</span>
-                                    <!-- <input type="file" name="..."> -->
-                                    {{ form.img_visa_3 }}
-                                </span>
-                                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
-                                </div>
-                                <br>
-                            </div>
-                            <!-- FIN VISA 3 -->
-
-                            <!-- INICIO VISA 4 -->
-                            <div id="visa_4" style="display:none">
-                                <label>Visa 4</label>
-                                {{ form.visa_4}}
-                                <br>
-                                <div class="form-group" id="data_1">
-                                    <div class="col-lg-12">
-                                        <label>Vigente hasta</label>
-                                        <div class="input-group date">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><!-- <input type="text" class="form-control"> -->
-                                            {{ form.vigencia_visa_4 }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <label>Imagen visa 4</label>
-                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                <div class="form-control" data-trigger="fileinput">
-                                    <i class="glyphicon glyphicon-file fileinput-exists"></i> 
-                                    <span class="fileinput-filename"></span>
-                                </div>
-                                <span class="input-group-addon btn btn-default btn-file">
-                                    <span class="fileinput-new">Seleccionar</span>
-                                    <span class="fileinput-exists">Cambiar</span>
-                                    <!-- <input type="file" name="..."> -->
-                                    {{ form.img_visa_4 }}
-                                </span>
-                                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
-                                </div>
-                                <br>
-                            </div>
-                            <!-- FIN VISA 4 -->
-
-                            <!-- INICIO VISA 5 -->
-                            <div id="visa_5" style="display:none">
-                                <label>Visa 5</label>
-                                {{ form.visa_5}}
-                                <br>
-                                <div class="form-group" id="data_1">
-                                    <div class="col-lg-12">
-                                        <label>Vigente hasta</label>
-                                        <div class="input-group date">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><!-- <input type="text" class="form-control"> -->
-                                            {{ form.vigencia_visa_5 }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <label>Imagen visa 5</label>
-                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                <div class="form-control" data-trigger="fileinput">
-                                    <i class="glyphicon glyphicon-file fileinput-exists"></i> 
-                                    <span class="fileinput-filename"></span>
-                                </div>
-                                <span class="input-group-addon btn btn-default btn-file">
-                                    <span class="fileinput-new">Seleccionar</span>
-                                    <span class="fileinput-exists">Cambiar</span>
-                                    <!-- <input type="file" name="..."> -->
-                                    {{ form.img_visa_5 }}
-                                </span>
-                                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
-                                </div>
-                                <br>
-                            </div>
-
-                            <!-- INICIO LICENCIA DE CONDUCIR -->
-                            
-                    </div>
-                </div>
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <i class="fa fa-vcard-o"></i> <strong>Sección 2</strong>
-                    </div>
-                    <div class="panel-body">
-
-                    {% if licencia_data %}
-                    {% for licencia in licencia_data%}
-                        <label>Licencia: </label> {{licencia.licencia}}<br>
-                        <label>Vigente hasta: </label> {{licencia.fecha_vigencia}}<br>
-                        <label>Emitida en: </label> {{licencia.estado_emision}}<br>
-                        {% if licencia.permanente == False%}
-                            <label>Permanete: </label> NO<br>
-                        {% else %}
-                            <label>Permanete: </label> Si<br>
-                        {% endif %}
-                    {% endfor %}
-                    {% else %}
-                        {% if empleado.status == 3 %}
-                            <strong>Licencia: </strong> N/A
-                        {% endif %}
-                    {% endif %}
-
-                    {% if empleado.status != 3 %}
-                    <fieldset>
-
-                            <p><strong>LICENCIA DE CONDUCIR</strong></p>
-                            <div class="radio radio-info radio-inline">
-                                <input type="radio" onclick="javascript:yesnoCheck();" id="inlineRadio7" value="option7" name="radioInline" checked="">
-                                <label for="inlineRadio7"> N/A </label>
-                            </div>
-                            <div class="radio radio-info radio-inline">
-                                <input type="radio" onclick="javascript:yesnoCheck();" id="inlineRadio8" value="option8" name="radioInline">
-                                <label for="inlineRadio8"> Si </label>
-                            </div>
-
-
-                        </fieldset>
+                    <!-- INICIO VISA 1 -->
+                    <div id="visa_1" style="display:none">
+                        <label>Visa 1</label>
+                        {{ form.visa_1}}
                         <br>
-                        {% endif %}
-                    <!-- <div id="visa_6" style="display:none"> -->
-                            <div id="licencia" style="display:none">
-
-                                <div class="form-group">
-                                    <label>Permanente</label>
-                                    {{ form.permanente }}
+                        <div class="form-group" id="data_1">
+                            <div class="col-lg-12">
+                                <label>Vigente hasta</label>
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><!-- <input type="text" class="form-control"> -->
+                                    {{ form.vigencia_visa_1 }}
                                 </div>
-
-                                <label>Licencia de conducir</label>
-                                {{ form.licencia_conducir}}
-                                <br>
-
-                                <div class="form-group">
-                                    <label>Estado de emisión</label>
-                                    {{ form.estado_emision_licencia }}
-                                </div>
-
-                                <div class="form-group" id="data_1">
-
-                                        <label>Vigente hasta</label>
-                                        <div class="input-group date">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><!-- <input type="text" class="form-control"> -->
-                                            {{ form.vigencia_licencia_conducir }}
-                                        </div>
-
-                                </div>
-                                <br>
-                                
-                                <label>Imagen de la licencia</label>
-                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                <div class="form-control" data-trigger="fileinput">
-                                    <i class="glyphicon glyphicon-file fileinput-exists"></i> 
-                                    <span class="fileinput-filename"></span>
-                                </div>
-                                <span class="input-group-addon btn btn-default btn-file">
-                                    <span class="fileinput-new">Seleccionar</span>
-                                    <span class="fileinput-exists">Cambiar</span>
-                                    <!-- <input type="file" name="..."> -->
-                                    {{ form.img_licencia }}
-                                </span>
-                                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
-                                </div>
-                                <br>
                             </div>
                         </div>
-                        <!-- FIN LICENCIA DE CONDUCIR -->
+                        <label>Imagen visa 1</label>
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                            <div class="form-control" data-trigger="fileinput">
+                                <i class="glyphicon glyphicon-file fileinput-exists"></i> 
+                                <span class="fileinput-filename"></span>
+                            </div>
+                            <span class="input-group-addon btn btn-default btn-file">
+                                <span class="fileinput-new">Seleccionar</span>
+                                <span class="fileinput-exists">Cambiar</span>
+                                <!-- <input type="file" name="..."> -->
+                                {{ form.img_visa_1 }}
+                            </span>
+                            <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+                        </div>
+                        <br>
                     </div>
+                    <!-- FIN VISA 1 -->
+
+                    <!-- INICIO VISA 2 -->
+                    <div id="visa_2" style="display:none">
+                        <label>Visa 2</label>
+                        {{ form.visa_2}}
+                        <br>
+                        <div class="form-group" id="data_1">
+                            <div class="col-lg-12">
+                                <label>Vigente hasta</label>
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><!-- <input type="text" class="form-control"> -->
+                                    {{ form.vigencia_visa_2 }}
+                                </div>
+                            </div>
+                        </div>
+                        <label>Imagen visa 2</label>
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                        <div class="form-control" data-trigger="fileinput">
+                            <i class="glyphicon glyphicon-file fileinput-exists"></i> 
+                            <span class="fileinput-filename"></span>
+                        </div>
+                        <span class="input-group-addon btn btn-default btn-file">
+                            <span class="fileinput-new">Seleccionar</span>
+                            <span class="fileinput-exists">Cambiar</span>
+                            <!-- <input type="file" name="..."> -->
+                            {{ form.img_visa_2 }}
+                        </span>
+                            <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+                        </div>
+                        <br>
+                    </div>
+                    <!-- FIN VISA 2 -->
+
+                    <!-- INICIO VISA 3 -->
+                    <div id="visa_3" style="display:none">
+                        <label>Visa 3</label>
+                        {{ form.visa_3}}
+                        <br>
+                        <div class="form-group" id="data_1">
+                            <div class="col-lg-12">
+                                <label>Vigente hasta</label>
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><!-- <input type="text" class="form-control"> -->
+                                    {{ form.vigencia_visa_3 }}
+                                </div>
+                            </div>
+                        </div>
+                        <label>Imagen visa 1</label>
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                        <div class="form-control" data-trigger="fileinput">
+                            <i class="glyphicon glyphicon-file fileinput-exists"></i> 
+                            <span class="fileinput-filename"></span>
+                        </div>
+                        <span class="input-group-addon btn btn-default btn-file">
+                            <span class="fileinput-new">Seleccionar</span>
+                            <span class="fileinput-exists">Cambiar</span>
+                            <!-- <input type="file" name="..."> -->
+                            {{ form.img_visa_3 }}
+                        </span>
+                            <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+                        </div>
+                        <br>
+                    </div>
+                    <!-- FIN VISA 3 -->
+
+                    <!-- INICIO VISA 4 -->
+                    <div id="visa_4" style="display:none">
+                        <label>Visa 4</label>
+                        {{ form.visa_4}}
+                        <br>
+                        <div class="form-group" id="data_1">
+                            <div class="col-lg-12">
+                                <label>Vigente hasta</label>
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><!-- <input type="text" class="form-control"> -->
+                                    {{ form.vigencia_visa_4 }}
+                                </div>
+                            </div>
+                        </div>
+                        <label>Imagen visa 4</label>
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                        <div class="form-control" data-trigger="fileinput">
+                            <i class="glyphicon glyphicon-file fileinput-exists"></i> 
+                            <span class="fileinput-filename"></span>
+                        </div>
+                        <span class="input-group-addon btn btn-default btn-file">
+                            <span class="fileinput-new">Seleccionar</span>
+                            <span class="fileinput-exists">Cambiar</span>
+                            <!-- <input type="file" name="..."> -->
+                            {{ form.img_visa_4 }}
+                        </span>
+                            <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+                        </div>
+                        <br>
+                    </div>
+                    <!-- FIN VISA 4 -->
+
+                    <!-- INICIO VISA 5 -->
+                    <div id="visa_5" style="display:none">
+                        <label>Visa 5</label>
+                        {{ form.visa_5}}
+                        <br>
+                        <div class="form-group" id="data_1">
+                            <div class="col-lg-12">
+                                <label>Vigente hasta</label>
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><!-- <input type="text" class="form-control"> -->
+                                    {{ form.vigencia_visa_5 }}
+                                </div>
+                            </div>
+                        </div>
+                        <label>Imagen visa 5</label>
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                        <div class="form-control" data-trigger="fileinput">
+                            <i class="glyphicon glyphicon-file fileinput-exists"></i> 
+                            <span class="fileinput-filename"></span>
+                        </div>
+                        <span class="input-group-addon btn btn-default btn-file">
+                            <span class="fileinput-new">Seleccionar</span>
+                            <span class="fileinput-exists">Cambiar</span>
+                            <!-- <input type="file" name="..."> -->
+                            {{ form.img_visa_5 }}
+                        </span>
+                            <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+                        </div>
+                        <br>
+                    </div>                        
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <i class="fa fa-vcard-o"></i> <strong>Sección 2</strong>
+                </div>
+                <div class="panel-body">
+
+                {% if licencia_data %}
+                {% for licencia in licencia_data%}
+                    <label>Licencia: </label> {{licencia.licencia}}<br>
+                    <label>Vigente hasta: </label> {{licencia.fecha_vigencia}}<br>
+                    <label>Emitida en: </label> {{licencia.estado_emision}}<br>
+                    {% if licencia.permanente == False%}
+                        <label>Permanete: </label> NO<br>
+                    {% else %}
+                        <label>Permanete: </label> Si<br>
+                    {% endif %}
+                {% endfor %}
+                {% else %}
+                    {% if empleado.status == 3 %}
+                        <strong>Licencia: </strong> N/A
+                    {% endif %}
+                {% endif %}
+
+                {% if empleado.status != 3 %}
+                <fieldset>
+
+                        <p><strong>LICENCIA DE CONDUCIR</strong></p>
+                        <div class="radio radio-info radio-inline">
+                            <input type="radio" onclick="javascript:yesnoCheck();" id="inlineRadio7" value="option7" name="radioInline" checked="">
+                            <label for="inlineRadio7"> N/A </label>
+                        </div>
+                        <div class="radio radio-info radio-inline">
+                            <input type="radio" onclick="javascript:yesnoCheck();" id="inlineRadio8" value="option8" name="radioInline">
+                            <label for="inlineRadio8"> Si </label>
+                        </div>
+
+
+                    </fieldset>
+                    <br>
+                    {% endif %}
+                <!-- <div id="visa_6" style="display:none"> -->
+                        <div id="licencia" style="display:none">
+
+                            <div class="form-group">
+                                <label>Permanente</label>
+                                {{ form.permanente }}
+                            </div>
+
+                            <label>Licencia de conducir</label>
+                            {{ form.licencia_conducir}}
+                            <br>
+
+                            <div class="form-group">
+                                <label>Estado de emisión</label>
+                                {{ form.estado_emision_licencia }}
+                            </div>
+
+                            <div class="form-group" id="data_1">
+
+                                    <label>Vigente hasta</label>
+                                    <div class="input-group date">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><!-- <input type="text" class="form-control"> -->
+                                        {{ form.vigencia_licencia_conducir }}
+                                    </div>
+
+                            </div>
+                            <br>
+                            
+                            <label>Imagen de la licencia</label>
+                            <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                            <div class="form-control" data-trigger="fileinput">
+                                <i class="glyphicon glyphicon-file fileinput-exists"></i> 
+                                <span class="fileinput-filename"></span>
+                            </div>
+                            <span class="input-group-addon btn btn-default btn-file">
+                                <span class="fileinput-new">Seleccionar</span>
+                                <span class="fileinput-exists">Cambiar</span>
+                                <!-- <input type="file" name="..."> -->
+                                {{ form.img_licencia }}
+                            </span>
+                                <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
                 <div class="panel panel-warning">
                     <div class="panel-heading">
                         <i class="fa fa-vcard-o"></i> <strong>Sección 3</strong>
@@ -1132,68 +865,72 @@
                         {% endif %}
                     </div>
                 </div>
-                    {% if empleado.status == 3 %}
+            </div>
 
-                    <div class="lightBoxGallery">
 
-                    <div>
+    {% if empleado.status == 3 %}
 
-                        {% for visa in todas_visas%}
+            <div class="lightBoxGallery">
 
-                        <a href="{{visa.imagen_visa.url}}" title="Visa {{visa.pais}}" data-gallery=""><img src="{{visa.imagen_visa.url}}" height="165" width="165"></a>
+                <div>
 
-                        {% endfor %}
+                    {% for visa in todas_visas%}
 
-                        {% for licencia in licencia_data %}
+                    <a href="{{visa.imagen_visa.url}}" title="Visa {{visa.pais}}" data-gallery=""><img src="{{visa.imagen_visa.url}}" height="165" width="165"></a>
 
-                        <a href="{{licencia.imagen_licencia.url}}" title="Licencia {{licencia.licencia}}" data-gallery=""><img src="{{licencia.imagen_licencia.url}}" height="165" width="165"></a>
+                    {% endfor %}
 
-                        {% endfor %}
+                    {% for licencia in licencia_data %}
 
-                        <a href="{{user.empleado.imagen_curp.url}}" title="CURP" data-gallery=""><img src="{{user.empleado.imagen_curp.url}}" height="165" width="165"></a>
+                    <a href="{{licencia.imagen_licencia.url}}" title="Licencia {{licencia.licencia}}" data-gallery=""><img src="{{licencia.imagen_licencia.url}}" height="165" width="165"></a>
 
-                        <a href="{{user.empleado.imagen_rfc.url}}" title="RFC" data-gallery=""><img src="{{user.empleado.imagen_rfc.url}}" height="165" width="165"></a>
+                    {% endfor %}
 
-                        <a href="{{user.empleado.imagen_sat.url}}" title="SAT" data-gallery=""><img src="{{user.empleado.imagen_sat.url}}" height="165" width="165"></a>
+                    <a href="{{user.empleado.imagen_curp.url}}" title="CURP" data-gallery=""><img src="{{user.empleado.imagen_curp.url}}" height="165" width="165"></a>
 
-                        <a href="{{user.empleado.imagen_infonavit.url}}" title="infonavit" data-gallery=""><img src="{{user.empleado.imagen_infonavit.url}}" height="165" width="165"></a>
+                    <a href="{{user.empleado.imagen_rfc.url}}" title="RFC" data-gallery=""><img src="{{user.empleado.imagen_rfc.url}}" height="165" width="165"></a>
 
-                        <a href="{{user.empleado.imagen_imss.url}}" title="IMSS" data-gallery=""><img src="{{user.empleado.imagen_imss.url}}" height="165" width="165"></a>
+                    <a href="{{user.empleado.imagen_sat.url}}" title="SAT" data-gallery=""><img src="{{user.empleado.imagen_sat.url}}" height="165" width="165"></a>
 
-                        <div id="blueimp-gallery" class="blueimp-gallery">
-                            <div class="slides"></div>
-                            <h3 class="title"></h3>
-                            <a class="prev">‹</a>
-                            <a class="next">›</a>
-                            <a class="close">×</a>
-                            <a class="play-pause"></a>
-                            <ol class="indicator"></ol>
-                        </div>
+                    <a href="{{user.empleado.imagen_infonavit.url}}" title="infonavit" data-gallery=""><img src="{{user.empleado.imagen_infonavit.url}}" height="165" width="165"></a>
 
+                    <a href="{{user.empleado.imagen_imss.url}}" title="IMSS" data-gallery=""><img src="{{user.empleado.imagen_imss.url}}" height="165" width="165"></a>
+
+                    <div id="blueimp-gallery" class="blueimp-gallery">
+                        <div class="slides"></div>
+                        <h3 class="title"></h3>
+                        <a class="prev">‹</a>
+                        <a class="next">›</a>
+                        <a class="close">×</a>
+                        <a class="play-pause"></a>
+                        <ol class="indicator"></ol>
                     </div>
 
-                    <div class="col-lg-12">
-                         <span>
-                            <br>
-                         </span>
-                    </div>
-                    <div class="col-lg-12">
-                        <a class="btn btn-success btn-rounded" href="{% url 'rechaza2' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Editar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                        <a class="btn btn-primary btn-rounded" href="{% url 'confirma2' %}">&nbsp;&nbsp;Confirmar&nbsp;&nbsp;</a>
-                    </div>
-                    {%else%}
-                    <div class="col-lg-12">
-                        <button type="submit" class="btn btn-block btn-rounded btn-primary">Aceptar</button>
-                    </div>
-                    {%endif%}
-                    <div class="col-lg-12">
-                         <span>
-                            <br>
-                         </span>
-                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                     <span>
+                        <br>
+                     </span>
+                </div>
+                <div class="col-lg-12">
+                    <a class="btn btn-success btn-rounded" href="{% url 'rechaza2' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Editar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="btn btn-primary btn-rounded" href="{% url 'confirma2' %}">&nbsp;&nbsp;Confirmar&nbsp;&nbsp;</a>
+                </div>
+    {%else%}
+                <div class="col-lg-12">
+                    <button type="submit" class="btn btn-block btn-rounded btn-primary">Aceptar</button>
+                </div>
+    {%endif%}
+                <div class="col-lg-12">
+                     <span>
+                        <br>
+                     </span>
+                </div>
                 </form>
             </div>
-        </div>
-    </div>
+
+
+
 
 {% endblock contenido %}
