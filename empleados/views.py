@@ -495,6 +495,10 @@ def etapa_5(request, template_name = "empleados/etapa_5.html"):
                 if estudios.cedula_profesional.imagen_cedula_profesional:
                     extension = estudios.cedula_profesional.imagen_cedula_profesional.url
                     filename, extension_cedula = os.path.splitext(extension)
+            if Capacitaciones.objects.filter(user=empleado).exists():
+                cursos = Capacitaciones.objects.filter(user=empleado)
+            if Idioma.objects.filter(user=empleado).exists():
+                idiomas = Idioma.objects.filter(user=empleado)
             Formulario = EstudiosForm()
             Cursos = CapacitacionForm()
             Idiomas = IdiomasForm()
@@ -617,3 +621,10 @@ def rechaza_etapa_5(request, template_name = "empleados/etapa_4.html"):
     except:
         pass
     return etapa_5(request)
+# ========= FIN ETAPA 5 ==========
+
+# ========= INICIO ETAPA 6 ==========
+@login_required(login_url = '/login/')
+def etapa_6(request, template_name = "empleados/etapa_6.html"):
+    usuario = request.user
+    return render(request, template_name, locals(),)

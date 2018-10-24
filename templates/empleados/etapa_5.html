@@ -589,7 +589,25 @@
                         </div>
                         {% endif %}
                 </div>
+            {% if empleado.status == 11 or empleado.status == 12 %}
             </div>
+                <div class="alert alert-dismissable alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Nivel bajo: </strong>es un nivel muy básico, sin fluidez y en el que se cometen muchos errores.
+            </div>
+            <div class="alert alert-dismissable alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Nivel medio: </strong>es un nivel medio, puede mantener una conversación poco fluida. Comete errores y el vocabulario es limitado.
+            </div>
+            <div class="alert alert-dismissable alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Nivel alto: </strong>se comunica con fluidez y comete pocos errores.
+            </div>
+            <div class="alert alert-dismissable alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Nivel bilingüe: </strong>es un nivel similar al de la lengua materna, puede hablar y escribir con fluidez en cualquier contexto. Puede traducir sin dificultad.
+            </div>
+            {% endif %}
         </div>
         <div class="col-lg-8">
             <div class="panel panel-primary">
@@ -606,7 +624,7 @@
                     </div>
                     {% if cursos %}
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
                                         <h5>Cursos</h5>
@@ -635,7 +653,7 @@
                                                 <td>{{capacitacion.nombre_curso}}</td>
                                                 <td>
                                                     <a href="{{capacitacion.certificado.url}}" target="_blank">
-                                                    <p class="text-success">Ver</p></a>
+                                                    <p class="text-success">Ver Certificado</p></a>
                                                     <a href="{% url 'borrar-curso' capacitacion.id %}">
                                                     <p class="text-danger">Borrar</p></a>
                                                 </td>
@@ -660,7 +678,7 @@
                 {% else %}
                     {% if cursos %}
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
                                         <h5>Cursos</h5>
@@ -708,12 +726,31 @@
             </div>
         </div>
         {% if empleado.status == 11 or empleado.status == 12 %}
+        <div class="col-lg-4">
+<!--             <div class="alert alert-dismissable alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Nivel bajo: </strong>es un nivel muy básico, sin fluidez y en el que se cometen muchos errores.
+            </div>
+            <div class="alert alert-dismissable alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Nivel medio: </strong>es un nivel medio, puede mantener una conversación poco fluida. Comete errores y el vocabulario es limitado.
+            </div>
+            <div class="alert alert-dismissable alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Nivel alto: </strong>se comunica con fluidez y comete pocos errores.
+            </div>
+            <div class="alert alert-dismissable alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Nivel bilingüe: </strong>es un nivel similar al de la lengua materna, puede hablar y escribir con fluidez en cualquier contexto. Puede traducir sin dificultad.
+            </div> -->
+        </div>
         <div class="col-lg-8">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <i class="fa fa-vcard-o"></i> <strong>Sección 3</strong>
                 </div>
                 <div class="panel-body">
+
                 {% if empleado.status == 11 %}
                     {{Idiomas.as_p}}
                     <div class="col-lg-8">
@@ -723,7 +760,7 @@
                     </div>
                     {% if idiomas %}
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
                                         <h5>idiomas</h5>
@@ -772,7 +809,7 @@
                 {% else %}
                     {% if idiomas %}
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
                                         <h5>Idiomas</h5>

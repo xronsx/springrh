@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from .opciones import *
 from composite_field import CompositeField
 from os.path import splitext, basename
+from django.core.validators import MaxValueValidator 
 
 class CedulaProfesional(CompositeField):
     cedula = models.IntegerField('Número de cédula profesional', blank=True, null=True)
@@ -154,3 +155,25 @@ class Idioma(models.Model):
 
     def __str__ (self):
         return str ((self.user.user.first_name)+" "+(self.user.user.last_name))+" "+(self.idioma)
+
+class Domicilio(models.Model):
+    user = models.ForeignKey(Empleado, related_name='user_de_domicilio')
+    tipo_comprobante = models.CharField('Tipo de comprobante de domicilio', max_length=60, choices=TIPOS_COMPROBANTES, default=Agua)
+    comprobante_domicilio = models.FileField('Comprobante de domicilio',upload_to = 'comprobantes_domicilio/')
+    tlf_residencial = models.CharField('Teléfono residencial',max_length=255)
+    def __str__ (self):
+        return str ((self.user.user.first_name)+" "+(self.user.user.last_name))
+
+class Recomendaciones(models.Model):
+    user = models.ForeignKey(Empleado, related_name='user_de_recomendaciones')
+    carta_recomendacion = models.FileField('Carta de recomendación',upload_to = 'cartas_recomendacion/')
+    def __str__ (self):
+        return str ((self.user.user.first_name)+" "+(self.user.user.last_name))
+
+class Banco(models.Model):
+    user = models.ForeignKey(Empleado, related_name='user_de_banco')
+    banco = models.CharField('Entidad bancaria', max_length=60, choices=BANCOS, default=Banco_Nacional_de_Mexico_Banamex)
+    contrato = models.FileField('Cabecera de contrato bancario',upload_to = 'bancos/')
+    clabe = models.PositiveIntegerField('Clabe', validators=[MaxValueValidator(999999999999999999)]) 
+    def __str__ (self):
+        return str ((self.user.user.first_name)+" "+(self.user.user.last_name))
