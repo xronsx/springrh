@@ -219,3 +219,30 @@ class IdiomasForm(forms.ModelForm):
         super(IdiomasForm, self).__init__(*args, **kwargs)
         for campos in self.fields:
             self.fields[campos].widget.attrs.update({'class': 'form-control'})
+
+class DomicilioForm(forms.ModelForm):
+    class Meta:
+        model = Domicilio
+        exclude = ('user',)
+    def __init__(self, *args, **kwargs):
+        super(DomicilioForm, self).__init__(*args, **kwargs)
+        for campos in self.fields:
+            self.fields[campos].widget.attrs.update({'class': 'form-control'})
+
+class RecomendacionesForm(forms.ModelForm):
+    class Meta:
+        model = Recomendaciones
+        exclude = ('user',)
+    def __init__(self, *args, **kwargs):
+        super(RecomendacionesForm, self).__init__(*args, **kwargs)
+        for campos in self.fields:
+            self.fields[campos].widget.attrs.update({'class': 'form-control'})
+
+class BancoForm(forms.ModelForm):
+    class Meta:
+        model = Banco
+        exclude = ('user',)
+    def __init__(self, *args, **kwargs):
+        super(BancoForm, self).__init__(*args, **kwargs)
+        for campos in self.fields:
+            self.fields[campos].widget.attrs.update({'class': 'form-control'})

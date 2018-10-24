@@ -63,6 +63,8 @@ def home(request, template_name = "dashboard/dashboard.html"):
 		empleado = Empleado.objects.get(user = usuario.pk)
 		foto = 1
 		etapa = empleado.status
+		if Estudio.objects.filter(user = usuario.pk).exists():
+			profesion = Estudio.objects.get(user=usuario.pk)
 	except:
 		foto = 0
 		etapa = 1

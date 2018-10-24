@@ -435,28 +435,6 @@
 
 {% endblock scripts %}
 
-{% block menu_lateral_header %}
-{% if request.user|has_group:"Administrador" %}
-    <li>
-        <a href=""><i class="fa fa-th-large"></i> <span class="nav-label">Opciones</span> <span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level collapse">
-            <li><a href="">Dashboard v.1</a></li>
-            <li><a href="">Dashboard v.2</a></li>
-            <li><a href="">Dashboard v.3</a></li>
-            <li><a href="">Dashboard v.4</a></li>
-            <li><a href="">Dashboard v.5 </a></li>
-        </ul>
-    </li>
-{% elif request.user|has_group:"Empleado" %}
-    <li>
-        <a href=""><i class="fa fa-th-large"></i> <span class="nav-label">Opciones</span> <span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level collapse">
-            <li><a href="">Por Definir</a></li>
-        </ul>
-    </li>
-{% endif %}
-{% endblock menu_lateral_header %}
-
 {% block contenido_header %}
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
@@ -474,5 +452,134 @@
 {% endblock contenido_header %}
 
 {% block contenido %}
+
+{% if empleado.status != 14 %}
+<form class="form-horizontal" method="post" role="form" action="" enctype="multipart/form-data">
+{% csrf_token %}
+{{recomendaciones.management_form}}
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-vcard-o"></i> <strong>Sección 1</strong>
+                </div>
+                <div class="panel-body">
+                    {{domicilios.as_p}}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-vcard-o"></i> <strong>Sección 2</strong>
+                </div>
+                <div class="panel-body">
+                    {% for formulario in recomendaciones_formset %}
+                        <label>Carta de recomendación {{forloop.counter}}:</label>
+                        {{formulario.carta_recomendacion}}
+                        <br>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-vcard-o"></i> <strong>Sección 3</strong>
+                </div>
+                <div class="panel-body">
+                    {{bancos.as_p}}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <button type="submit" class="btn btn-block btn-rounded btn-primary">Aceptar</button>
+        </div>
+    </div>
+</div>
+</form>
+{% else %}
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-vcard-o"></i> <strong>Sección 1</strong>
+                </div>
+                <div class="panel-body">
+                    <label>Tipo de comprobante de domicilio: </label>
+                    {{domicilio_datos.tipo_comprobante}}<br>
+                    <label>Teléfono residencial: </label>
+                    {{domicilio_datos.tlf_residencial}}<br>
+                    <label>Banco: </label>
+                    {{banco_datos.banco}}<br>
+                    <label>Clabe: </label>
+                    {{banco_datos.clabe}}<br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lightBoxGallery">
+
+    <div>
+
+        <a href="{{domicilio_datos.comprobante_domicilio.url}}" title="Comprobante de domicilio" data-gallery=""><img src="{{domicilio_datos.comprobante_domicilio.url}}" height="165" width="165"></a>
+
+        {% if recomendaciones_datos %}
+        {% for recomendacion in  recomendaciones_datos%}
+            <a href="{{recomendacion.carta_recomendacion.url}}" title="Caerta de recomendación {{forloop.counter}}" data-gallery=""><img src="{{recomendacion.carta_recomendacion.url}}" height="165" width="165"></a>
+        {% endfor %}
+        {% endif %}
+
+        <a href="{{banco_datos.contrato.url}}" title="Cabecera de contrato bancario" data-gallery=""><img src="{{banco_datos.contrato.url}}" height="165" width="165"></a>
+
+        <div id="blueimp-gallery" class="blueimp-gallery">
+            <div class="slides"></div>
+            <h3 class="title"></h3>
+            <a class="prev">‹</a>
+            <a class="next">›</a>
+            <a class="close">×</a>
+            <a class="play-pause"></a>
+            <ol class="indicator"></ol>
+        </div>
+
+    </div>
+
+    <div class="col-lg-12">
+         <span>
+            <br>
+         </span>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+        <p class="text-center">
+            <a class="btn btn-success btn-rounded" href="{% url 'rechaza6' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Editar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <a class="btn btn-primary btn-rounded" href="{% url 'confirma6' %}">&nbsp;&nbsp;Confirmar&nbsp;&nbsp;</a>
+        </p>
+        </div>
+    </div>
+    <div class="row">
+
+    <div class="col-lg-12">
+         <span>
+            <br>
+         </span>
+    </div>
+    </div>
+</div>
+
+
+{% endif %}
 
 {% endblock contenido %}

@@ -70,28 +70,6 @@
 
 {% endblock scripts %}
 
-{% block menu_lateral_header %}
-{% if request.user|has_group:"Administrador" %}
-    <li>
-        <a href=""><i class="fa fa-th-large"></i> <span class="nav-label">Opciones</span> <span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level collapse">
-            <li><a href="">Dashboard v.1</a></li>
-            <li><a href="">Dashboard v.2</a></li>
-            <li><a href="">Dashboard v.3</a></li>
-            <li><a href="">Dashboard v.4</a></li>
-            <li><a href="">Dashboard v.5 </a></li>
-        </ul>
-    </li>
-{% elif request.user|has_group:"Empleado" %}
-    <li>
-        <a href=""><i class="fa fa-th-large"></i> <span class="nav-label">Opciones</span> <span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level collapse">
-            <li><a href="">Por Definir</a></li>
-        </ul>
-    </li>
-{% endif %}
-{% endblock menu_lateral_header %}
-
 {% block contenido_header %}
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
@@ -111,7 +89,7 @@
 {% endblock contenido_header %}
 
 {% block contenido %}
-<div class="middle-box text-center animated fadeInRight">
+<div class="middle-box text-center">
     <div class="row">
         <div class="tooltip-demo">
 
@@ -123,63 +101,103 @@
 
              {% elif etapa == 2 or etapa == 3 %}
 
-            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="left" title="Etapa 1, COMPLETADA"><i class="fa fa-user-circle"></i></button>
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInLeft" type="button" data-toggle="tooltip" data-placement="left" title="Etapa 1, COMPLETADA"><i class="fa fa-user-circle"></i></button>
 
             <a href="{% url 'etapa-2' %}">
-            <button class="btn btn-warning  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="right" title="Etapa 2"><i class="fa fa-address-book" ></i></button>
+            <button class="btn btn-warning  dim btn-large-dim btn-outline text-center animated fadeInRight" type="button" data-toggle="tooltip" data-placement="right" title="Etapa 2"><i class="fa fa-address-book" ></i></button>
             </a> 
 
             {% elif etapa == 4 or etapa == 5 %}
 
-            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="left" title="Etapa 1, COMPLETADA"><i class="fa fa-user-circle"></i></button>
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInLeft" type="button" data-toggle="tooltip" data-placement="left" title="Etapa 1, COMPLETADA"><i class="fa fa-user-circle"></i></button>
 
-            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="top" title="Etapa 2, COMPLETADA"><i class="fa fa-address-book" ></i></button>
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInDown" type="button" data-toggle="tooltip" data-placement="top" title="Etapa 2, COMPLETADA"><i class="fa fa-address-book" ></i></button>
 
             <a href="{% url 'etapa-3' %}">
-            <button class="btn btn-success  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="right" title="Etapa 3"><i class="fa fa-address-card-o" ></i></button>
+            <button class="btn btn-success  dim btn-large-dim btn-outline text-center animated fadeInRight" type="button" data-toggle="tooltip" data-placement="right" title="Etapa 3"><i class="fa fa-address-card-o" ></i></button>
             </a> 
             
             {% elif etapa == 6 or etapa == 7 %}
 
-            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="left" title="Etapa 1, COMPLETADA"><i class="fa fa-user-circle"></i></button>
+            <div class="row">
 
-            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 2, COMPLETADA"><i class="fa fa-address-book" ></i></button>
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInLeft" type="button" data-toggle="tooltip" data-placement="left" title="Etapa 1, COMPLETADA"><i class="fa fa-user-circle"></i></button>
 
-            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 3, COMPLETADA"><i class="fa fa-address-card-o" ></i></button>
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInDown" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 2, COMPLETADA"><i class="fa fa-address-book" ></i></button>
+
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInRight" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 3, COMPLETADA"><i class="fa fa-address-card-o" ></i></button>
+
+            </div>
 
             <a href="{% url 'etapa-4' %}">
-            <button class="btn btn-danger  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="right" title="Etapa 4"><i class="fa fa-group" ></i></button>
+            <button class="btn btn-danger  dim btn-large-dim btn-outline text-center animated fadeInUp" type="button" data-toggle="tooltip" data-placement="right" title="Etapa 4"><i class="fa fa-group" ></i></button>
             </a> 
 
             {% elif etapa == 8 or etapa == 9 or etapa == 10 or etapa == 11 or etapa == 12 %}
 
-            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="left" title="Etapa 1, COMPLETADA"><i class="fa fa-user-circle"></i></button>
+            <div class="row">
 
-            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 2, COMPLETADA"><i class="fa fa-address-book" ></i></button>
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInLeft" type="button" data-toggle="tooltip" data-placement="left" title="Etapa 1, COMPLETADA"><i class="fa fa-user-circle"></i></button>
 
-            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 3, COMPLETADA"><i class="fa fa-address-card-o" ></i></button>
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInDown" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 2, COMPLETADA"><i class="fa fa-address-book" ></i></button>
 
-            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="right" title="Etapa 4, COMPLETADA"><i class="fa fa-group" ></i></button>
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInRight" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 3, COMPLETADA"><i class="fa fa-address-card-o" ></i></button>
+
+            </div>
+
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInLeft" type="button" data-toggle="tooltip" data-placement="right" title="Etapa 4, COMPLETADA"><i class="fa fa-group" ></i></button>
 
             <a href="{% url 'etapa-5' %}">
-            <button class="btn btn-primary  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="bottom" title="Etapa 5"><i class="fa fa-graduation-cap" ></i></button>
+            <button class="btn btn-primary  dim btn-large-dim btn-outline text-center animated fadeInRight" type="button" data-toggle="tooltip" data-placement="bottom" title="Etapa 5"><i class="fa fa-graduation-cap" ></i></button>
             </a> 
 
-            {% elif etapa == 13 %}
+            {% elif etapa == 13 or etapa == 14 %}
 
-            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="left" title="Etapa 1, COMPLETADA"><i class="fa fa-user-circle"></i></button>
+            <div class = "row">
 
-            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 2, COMPLETADA"><i class="fa fa-address-book" ></i></button>
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInLeft" type="button" data-toggle="tooltip" data-placement="left" title="Etapa 1, COMPLETADA"><i class="fa fa-user-circle"></i></button>
 
-            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 3, COMPLETADA"><i class="fa fa-address-card-o" ></i></button>
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInDown" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 2, COMPLETADA"><i class="fa fa-address-book" ></i></button>
 
-            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="right" title="Etapa 4, COMPLETADA"><i class="fa fa-group" ></i></button>
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInRight" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 3, COMPLETADA"><i class="fa fa-address-card-o" ></i></button>
 
-            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="bottom" title="Etapa 5"><i class="fa fa-graduation-cap" ></i></button>
+            </div>
+
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInLeft" type="button" data-toggle="tooltip" data-placement="right" title="Etapa 4, COMPLETADA"><i class="fa fa-group" ></i></button>
+
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInUp" type="button" data-toggle="tooltip" data-placement="bottom" title="Etapa 5 - COMPLETADA"><i class="fa fa-graduation-cap" ></i></button>
 
             <a href="{% url 'etapa-6' %}">
-            <button class="btn btn-info  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="bottom" title="Etapa 6"><i class="fa fa-folder-open" ></i></button>
+            <button class="btn btn-info  dim btn-large-dim btn-outline text-center animated fadeInRight" type="button" data-toggle="tooltip" data-placement="bottom" title="Etapa 6"><i class="fa fa-folder-open" ></i></button>
             </a> 
+
+            {% elif etapa == 15 %}
+
+
+            <div class="row">
+
+            <button class="btn btn-default  dim btn-large-dim btn-outline animated fadeInLeft" type="button" data-toggle="tooltip" data-placement="left" title="Etapa 1, COMPLETADA"><i class="fa fa-user-circle"></i></button>
+
+            <button class="btn btn-default  dim btn-large-dim btn-outline animated fadeInDown" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 2, COMPLETADA"><i class="fa fa-address-book" ></i></button>
+
+
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInRight" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 3, COMPLETADA"><i class="fa fa-address-card-o" ></i></button>
+
+            </div>
+            <div class="row">
+
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInLeft" type="button" data-toggle="tooltip" data-placement="right" title="Etapa 4, COMPLETADA"><i class="fa fa-group" ></i></button>
+
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInUp" type="button" data-toggle="tooltip" data-placement="bottom" title="Etapa 5 - COMPLETADA"><i class="fa fa-graduation-cap" ></i></button>
+
+            <button class="btn btn-default  dim btn-large-dim btn-outline text-center animated fadeInRight" type="button" data-toggle="tooltip" data-placement="bottom" title="Etapa 6 - COMPLETADA"><i class="fa fa-folder-open" ></i></button>
+
+            </div>
+            <div class = "row">
+                <div class="alert alert-info text-center animated fadeInUp">
+                    <strong>SU PERFIL YA ESTÁ COMPLETO</strong>
+                </div>
+            </div>
 
             {% endif %}
 

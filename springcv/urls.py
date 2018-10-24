@@ -57,6 +57,8 @@ extra_patterns2 = [
     url(r'^rechaza5', empleados_views.rechaza_etapa_5, name = 'rechaza5'),
     # ETAPA 6
     url(r'^etapa-6', empleados_views.etapa_6, name = 'etapa-6'),
+    url(r'^rechaza6', empleados_views.rechaza_etapa_6, name = 'rechaza6'),
+    url(r'^confirma6', empleados_views.confirma_etapa_6, name = 'confirma6'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns = [

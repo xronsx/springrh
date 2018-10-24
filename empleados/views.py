@@ -627,4 +627,77 @@ def rechaza_etapa_5(request, template_name = "empleados/etapa_4.html"):
 @login_required(login_url = '/login/')
 def etapa_6(request, template_name = "empleados/etapa_6.html"):
     usuario = request.user
+    empleado = Empleado.objects.get(user=usuario.pk)
+    if request.method == 'POST':
+        domicilios_post = DomicilioForm(request.POST, request.FILES)
+        recomendaciones = formset_factory(RecomendacionesForm, extra = 2)
+        recomendaciones_post = recomendaciones(request.POST, request.FILES)
+        bancos_post = BancoForm(request.POST, request.FILES)
+        try:
+            if domicilios_post.is_valid():
+                Domicilios = domicilios_post.save(commit=False)
+                Domicilios.user = empleado
+                Domicilios.save()
+            if recomendaciones_post.is_valid():
+                for form in recomendaciones_post:
+                    if form.has_changed():
+                        form = form.save(commit=False)
+                        form.user = empleado
+                        form.save()
+            if bancos_post.is_valid():
+                Bancos = bancos_post.save(commit=False)
+                Bancos.user = empleado
+                Bancos.save()
+            empleado.status = 14
+            empleado.save()
+        except:
+            print("ERROR AL GURADAR DATOS")
+        domicilio_datos = Domicilio.objects.get(user=empleado)
+        if Recomendaciones.objects.filter(user=empleado).exists():
+            recomendaciones_datos = Recomendaciones.objects.filter(user=empleado)
+        banco_datos = Banco.objects.get(user=empleado)
+        domicilios = DomicilioForm()
+        recomendaciones = formset_factory(RecomendacionesForm, extra = 2)
+        recomendaciones_formset = recomendaciones()
+        bancos = BancoForm()
+    else:
+        if Domicilio.objects.filter(user=empleado).exists():
+            domicilio_datos = Domicilio.objects.get(user=empleado)
+        if Recomendaciones.objects.filter(user=empleado).exists():
+            recomendaciones_datos = Recomendaciones.objects.filter(user=empleado)
+        if Banco.objects.filter(user=empleado).exists():
+            banco_datos = Banco.objects.get(user=empleado)
+        domicilios = DomicilioForm()
+        recomendaciones = formset_factory(RecomendacionesForm, extra = 2)
+        recomendaciones_formset = recomendaciones()
+        bancos = BancoForm()
     return render(request, template_name, locals(),)
+
+@login_required(login_url = '/login/')
+def rechaza_etapa_6(request, template_name = "empleados/etapa_6.html"):
+    usuario = request.user
+    empleado = Empleado.objects.get(user=usuario.pk)
+    try:
+        domicilio_datos = Domicilio.objects.get(user=empleado)
+        if Recomendaciones.objects.filter(user=empleado).exists():
+            recomendaciones_datos = Recomendaciones.objects.filter(user=empleado)
+        banco_datos = Banco.objects.get(user=empleado)
+        domicilio_datos.delete()
+        recomendaciones_datos.delete()
+        banco_datos.delete()
+        empleado.status = 13
+        empleado.save()
+    except:
+        pass
+    return etapa_6(request)
+
+@login_required(login_url = '/login/')
+def confirma_etapa_6(request, template_name = "dashboard/dashboard.html"):
+    usuario = request.user
+    try:
+        empleado = Empleado.objects.get(user = usuario.pk)
+        empleado.status = 15
+        empleado.save()
+    except:
+        pass
+    return home(request)

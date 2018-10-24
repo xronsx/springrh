@@ -166,7 +166,7 @@ class Domicilio(models.Model):
 
 class Recomendaciones(models.Model):
     user = models.ForeignKey(Empleado, related_name='user_de_recomendaciones')
-    carta_recomendacion = models.FileField('Carta de recomendación',upload_to = 'cartas_recomendacion/')
+    carta_recomendacion = models.FileField('Carta de recomendación',upload_to = 'cartas_recomendacion/', blank=True, null=True)
     def __str__ (self):
         return str ((self.user.user.first_name)+" "+(self.user.user.last_name))
 
