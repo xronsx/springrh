@@ -210,3 +210,12 @@ class CapacitacionForm(forms.ModelForm):
         super(CapacitacionForm, self).__init__(*args, **kwargs)
         for campos in self.fields:
             self.fields[campos].widget.attrs.update({'class': 'form-control'})
+
+class IdiomasForm(forms.ModelForm):
+    class Meta:
+        model = Idioma
+        exclude = ('user',)
+    def __init__(self, *args, **kwargs):
+        super(IdiomasForm, self).__init__(*args, **kwargs)
+        for campos in self.fields:
+            self.fields[campos].widget.attrs.update({'class': 'form-control'})

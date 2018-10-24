@@ -50,6 +50,11 @@ extra_patterns2 = [
     url(r'^rechaza5_9', empleados_views.rechaza_etapa_5_status_9, name = 'rechaza-status-9'),
     url(r'^confirma5_9', empleados_views.confirma_etapa_5_status_9, name = 'confirma-status-9'),
     url(r'^borrar-curso/(?P<id>[-A-Za-z0-9_]+)$', empleados_views.borrar_curso, name = 'borrar-curso'),
+    url(r'^borrar-idioma/(?P<id>[-A-Za-z0-9_]+)$', empleados_views.borrar_idioma, name = 'borrar-idioma'),
+    url(r'^confirma5_10', empleados_views.confirma_etapa_5_status_10, name = 'confirma-status-10'),
+    url(r'^confirma5_11', empleados_views.confirma_etapa_5_status_11, name = 'confirma-status-11'),
+    url(r'^confirma5', empleados_views.confirma_etapa_5, name = 'confirma5'),
+    url(r'^rechaza5', empleados_views.rechaza_etapa_5, name = 'rechaza5'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns = [

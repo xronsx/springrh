@@ -145,3 +145,12 @@ class Capacitaciones(models.Model):
 
     def __str__ (self):
         return str ((self.user.user.first_name)+" "+(self.user.user.last_name))+" "+(self.nombre_curso)
+
+class Idioma(models.Model):
+    user = models.ForeignKey(Empleado, related_name='user_de_idioma')
+    idioma = models.CharField('Idioma', max_length=60)
+    nivel_escrito = models.CharField('Nivel Escrito', max_length=60, choices=NIVELES_IDIOMA, default=nivel_bajo)
+    nivel_hablado = models.CharField('Nivel Hablado', max_length=60, choices=NIVELES_IDIOMA, default=nivel_bajo)
+
+    def __str__ (self):
+        return str ((self.user.user.first_name)+" "+(self.user.user.last_name))+" "+(self.idioma)

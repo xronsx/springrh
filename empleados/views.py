@@ -468,6 +468,7 @@ def etapa_5(request, template_name = "empleados/etapa_5.html"):
         try:
             Formulario_estudios = EstudiosForm(request.POST, request.FILES)
             Formulario_cursos = CapacitacionForm(request.POST, request.FILES)
+            Formulario_idiomas = IdiomasForm(request.POST)
             if Formulario_estudios.is_valid():
                 Estudios = Formulario_estudios.save(commit=False)
                 Estudios.user = empleado
@@ -481,6 +482,11 @@ def etapa_5(request, template_name = "empleados/etapa_5.html"):
                 cursos.user = empleado
                 cursos.save()
                 cursos = Capacitaciones.objects.filter(user=empleado)
+            if Formulario_idiomas.is_valid():
+                idiomas = Formulario_idiomas.save(commit=False)
+                idiomas.user = empleado
+                idiomas.save()
+                idiomas = Idioma.objects.filter(user=empleado)
             if Estudio.objects.filter(user = usuario.pk).exists():
                 estudios = Estudio.objects.get(user=usuario.pk)
                 if (estudios.constacia_de_estudio):
@@ -491,6 +497,7 @@ def etapa_5(request, template_name = "empleados/etapa_5.html"):
                     filename, extension_cedula = os.path.splitext(extension)
             Formulario = EstudiosForm()
             Cursos = CapacitacionForm()
+            Idiomas = IdiomasForm()
         except:
             print("Error al guardar datos")
     else:
@@ -502,10 +509,13 @@ def etapa_5(request, template_name = "empleados/etapa_5.html"):
             if estudios.cedula_profesional.imagen_cedula_profesional:
                 extension = estudios.cedula_profesional.imagen_cedula_profesional.url
                 filename, extension_cedula = os.path.splitext(extension)
-            if Capacitaciones.objects.filter(user=empleado).exists():
-                cursos = Capacitaciones.objects.filter(user=empleado)
+        if Capacitaciones.objects.filter(user=empleado).exists():
+            cursos = Capacitaciones.objects.filter(user=empleado)
+        if Idioma.objects.filter(user=empleado).exists():
+            idiomas = Idioma.objects.filter(user=empleado)
         Formulario = EstudiosForm()
         Cursos = CapacitacionForm()
+        Idiomas = IdiomasForm()
     return render(request, template_name, locals(),)
 
 @login_required(login_url = '/login/')
@@ -540,6 +550,70 @@ def borrar_curso(request, id, template_name = "empleados/etapa_4.html"):
         curso = Capacitaciones.objects.filter(pk = id)
         curso.delete()
         curso.save()
+    except:
+        pass
+    return etapa_5(request)
+
+@login_required(login_url = '/login/')
+def borrar_idioma(request, id, template_name = "empleados/etapa_4.html"):
+    usuario = request.user
+    try:
+        idioma = Idioma.objects.filter(pk = id)
+        idioma.delete()
+        idioma.save()
+    except:
+        pass
+    return etapa_5(request)
+
+@login_required(login_url = '/login/')
+def confirma_etapa_5_status_10(request, template_name = "empleados/etapa_4.html"):
+    usuario = request.user
+    try:
+        empleado = Empleado.objects.get(user = usuario.pk)
+        empleado.status = 11
+        empleado.save()
+    except:
+        pass
+    return etapa_5(request)
+
+@login_required(login_url = '/login/')
+def confirma_etapa_5_status_11(request, template_name = "empleados/etapa_4.html"):
+    usuario = request.user
+    try:
+        empleado = Empleado.objects.get(user = usuario.pk)
+        empleado.status = 12
+        empleado.save()
+    except:
+        pass
+    return etapa_5(request)
+
+@login_required(login_url = '/login/')
+def confirma_etapa_5(request, template_name = "dashboard/dashboard.html"):
+    usuario = request.user
+    try:
+        empleado = Empleado.objects.get(user = usuario.pk)
+        empleado.status = 13
+        empleado.save()
+    except:
+        pass
+    return home(request)
+
+@login_required(login_url = '/login/')
+def rechaza_etapa_5(request, template_name = "empleados/etapa_4.html"):
+    usuario = request.user
+    try:
+        empleado = Empleado.objects.get(user = usuario.pk)
+        empleado.status = 8
+        empleado.save()
+        if Estudio.objects.filter(user=empleado).exists():
+            estudios_registrados = Estudio.objects.filter(user=empleado)
+            estudios_registrados.delete()
+        if Capacitaciones.objects.filter(user=empleado).exists():
+            cursos = Capacitaciones.objects.filter(user=empleado)
+            cursos.delete()
+        if Idioma.objects.filter(user=empleado).exists():
+            idiomas = Idioma.objects.filter(user=empleado)
+            idiomas.delete()
     except:
         pass
     return etapa_5(request)

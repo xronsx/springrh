@@ -151,7 +151,7 @@
             <button class="btn btn-danger  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="right" title="Etapa 4"><i class="fa fa-group" ></i></button>
             </a> 
 
-            {% elif etapa == 8 or etapa == 9 or etapa == 10 %}
+            {% elif etapa == 8 or etapa == 9 or etapa == 10 or etapa == 11 or etapa == 12 %}
 
             <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="left" title="Etapa 1, COMPLETADA"><i class="fa fa-user-circle"></i></button>
 
@@ -164,6 +164,18 @@
             <a href="{% url 'etapa-5' %}">
             <button class="btn btn-primary  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="bottom" title="Etapa 5"><i class="fa fa-graduation-cap" ></i></button>
             </a> 
+
+            {% elif etapa == 13 %}
+
+            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="left" title="Etapa 1, COMPLETADA"><i class="fa fa-user-circle"></i></button>
+
+            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 2, COMPLETADA"><i class="fa fa-address-book" ></i></button>
+
+            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="top"  title="Etapa 3, COMPLETADA"><i class="fa fa-address-card-o" ></i></button>
+
+            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="right" title="Etapa 4, COMPLETADA"><i class="fa fa-group" ></i></button>
+
+            <button class="btn btn-default  dim btn-large-dim btn-outline" type="button" data-toggle="tooltip" data-placement="bottom" title="Etapa 5"><i class="fa fa-graduation-cap" ></i></button>
 
             {% endif %}
 

@@ -61,6 +61,11 @@ Curso='Curso'
 Diplomado='Diplomado'
 Taller='Taller'
 
+#Nivel escrito
+nivel_bajo = 'Nivel Bajo'
+nivel_medio = 'Nivel Medio'
+nivel_alto = 'Nivel Alto'
+nivel_bilingue = 'Nivel Bilingüe'
 
 STATUS_CHOICES = (
 	(Aguascalientes,'Aguascalientes'),
@@ -135,3 +140,10 @@ TIPOS_CURSOS = (
 	(Diplomado, 'Diplomado'),
 	(Taller, 'Taller'),
 )
+
+NIVELES_IDIOMA = (
+	(nivel_bajo, 'Nivel Bajo'),
+	(nivel_medio, 'Nivel Medio'),
+	(nivel_alto, 'Nivel Alto'),
+	(nivel_bilingue, 'Nivel Bilingüe'),
+	)
