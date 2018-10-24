@@ -425,6 +425,14 @@
 
     </script>
 
+    <script>
+        $(document).ready(function(){
+            $('.file-box').each(function() {
+                animationHover(this, 'pulse');
+            });
+        });
+    </script>
+
 {% endblock scripts %}
 
 {% block menu_lateral_header %}
@@ -467,6 +475,10 @@
 
 {% block contenido %}
 
+<form class="form-horizontal" method="post" role="form" action="" enctype="multipart/form-data">
+{% csrf_token %}
+
+{% if empleado.status == 8 or empleado.status == 9 %}
 <div class="wrapper wrapper-content animated fadeIn">
     <div class="row">
         <div class="col-lg-12">
@@ -477,8 +489,6 @@
                 </div>
                 <div class="panel-body">
 
-<form class="form-horizontal" method="post" role="form" action="" enctype="multipart/form-data">
-{% csrf_token %}
                         {% if empleado.status == 8 %}
                             <div class="alert alert-dismissable alert-warning">
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -509,10 +519,157 @@
         </div>
     </div>
 </div>
+{% endif %}
+
+{% if empleado.status == 10 %}
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-4">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-vcard-o"></i> <strong>Sección 1</strong>
+                </div>
+                <div class="panel-body">
+                    <label>Nivel de estudios: </label> {{estudios.nivel_estudios}}<br>
+                        {% if estudios.universidad != '' %}
+                            <label>Universidad: </label>{{estudios.universidad}}<br>
+                        {% endif %}
+                        {% if estudios.titulo != '' %}
+                            <label>Título: </label>
+                            {{estudios.titulo}}<br>
+                        {% endif %}
+                        {% if estudios.carrera != '' %}
+                            <label>Carrera: </label>
+                            {{estudios.carrera}}<br>
+                        {% endif %}
+                        {% if estudios.cedula_profesional.cedula %}
+                            <label>Cédula profesional: </label>
+                            {{estudios.cedula_profesional.cedula}}<br>
+                        {% endif %} 
+
+                       <div class="col-lg-12">
+                             <span>
+                                <br>
+                             </span>
+                        </div>
+
+
+                        {% if estudios.cedula_profesional.imagen_cedula_profesional %}
+                        <div class="file-box">
+                            <div class="file">
+                                <a href="{{estudios.cedula_profesional.imagen_cedula_profesional.url}}" target="_blank">
+                                    <span class="corner"></span>
+
+                                    <div class="icon">
+                                        <i class="fa fa-file"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        Cédula profesional.{{extension_cedula}}
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if estudios.constacia_de_estudio %}
+                        <div class="file-box">
+                            <div class="file">
+                                <a href="{{estudios.constacia_de_estudio.url}}" target="_blank">
+                                    <span class="corner"></span>
+
+                                    <div class="icon">
+                                        <i class="fa fa-file"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        Constancia de estudio{{extension_constancia}}
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-vcard-o"></i> <strong>Sección 2</strong>
+                </div>
+                <div class="panel-body">
+                    {{ Cursos.as_p }}
+                    <div class="col-lg-8">
+                         <span>
+                            <br>
+                         </span>
+                    </div>
+                    {% if cursos %}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5>Cursos</h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content">
+
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Tipo</th>
+                                                <th>Nombre</th>
+                                                <th>Acción</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for capacitacion in cursos %}
+                                            <tr>
+                                                <td>{{forloop.counter}}</td>
+                                                <td>{{capacitacion.tipo_curso}}</td>
+                                                <td>{{capacitacion.nombre_curso}}</td>
+                                                <td>
+                                                    <a href="{{capacitacion.certificado.url}}" target="_blank">
+                                                    <p class="text-success">Ver</p></a>
+                                                    <a href="{% url 'borrar-curso' capacitacion.id %}">
+                                                    <p class="text-danger">Borrar</p></a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="col-lg-8">
+                         <span>
+                            <br>
+                         </span>
+                    </div>
+                    <p class="text-right">
+                    <button type="submit" class="btn btn-block btn-rounded btn-success">Agregar</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+<div class="lightBoxGallery">
 
 {% if empleado.status == 9 %}
-
-<div class="lightBoxGallery">
 
     <div>
 
@@ -542,12 +699,18 @@
          </span>
     </div>
     <div class="col-lg-12">
-        <a class="btn btn-success btn-rounded" href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Editar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-        <a class="btn btn-primary btn-rounded" href="">&nbsp;&nbsp;Confirmar&nbsp;&nbsp;</a>
+        <a class="btn btn-success btn-rounded" href="{% url 'rechaza-status-9' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Editar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        <a class="btn btn-primary btn-rounded" href="{% url 'confirma-status-9' %}">&nbsp;&nbsp;Confirmar&nbsp;&nbsp;</a>
     </div>
-{% else %}
+{% endif %}
+{% if empleado.status == 10 %}
     <div class="col-lg-12">
-        <button type="submit" class="btn btn-block btn-rounded btn-primary">Aceptar</button>
+        <a class="btn btn-primary btn-rounded" href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aceptar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    </div>
+{% endif %}
+{% if empleado.status == 8 %}
+    <div class="col-lg-12">
+    <button type="submit" class="btn btn-block btn-rounded btn-primary">Aceptar</button>
     </div>
 {% endif %}
     <div class="col-lg-12">
@@ -555,6 +718,9 @@
             <br>
          </span>
     </div>
+</div>
+</div>
+</div>
 </div>
 </form>
 {% endblock contenido %}

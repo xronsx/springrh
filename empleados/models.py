@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from .opciones import *
 from composite_field import CompositeField
+from os.path import splitext, basename
 
 class CedulaProfesional(CompositeField):
     cedula = models.IntegerField('Número de cédula profesional', blank=True, null=True)
@@ -34,7 +35,7 @@ class Empleado(models.Model):
     tipo_documento_identidad = models.ForeignKey(TipoDocumentoIdentidad, related_name="pais_nacimiento_de")
     docu_ident_front = models.ImageField(upload_to = 'documentos_identidad/')
     docu_ident_back = models.ImageField(upload_to = 'documentos_identidad/', blank = True)
-    pasaporte = models.IntegerField(blank = False)
+    pasaporte = models.BigIntegerField(blank = False)
     pasaporte_valido = models.DateTimeField('fecha de vencimiento', auto_now_add = False)
     imagen_pasaporte = models.ImageField(upload_to = 'pasaportes/')
     status = models.IntegerField(blank = False, default=1)
@@ -128,5 +129,19 @@ class Estudio(models.Model):
     carrera = models.CharField('Carrera o profesión', max_length=100, blank=True, null=True)
     cedula_profesional = CedulaProfesional()
     constacia_de_estudio = models.ImageField('Constancia de estudio o diploma universitario',upload_to = 'cedulas_profesionales/', blank=True, null=True)
+
+    def extension(self):
+        extension = os.path.splitext(self.constacia_de_estudio.url)
+        return extension
+
     def __str__ (self):
         return str ((self.user.user.first_name)+" "+(self.user.user.last_name))
+
+class Capacitaciones(models.Model):
+    user = models.ForeignKey(Empleado, related_name='user_de_curso')
+    tipo_curso = models.CharField('Tipo de curso', max_length=60, choices=TIPOS_CURSOS, default=Curso)
+    nombre_curso = models.CharField('Título o descripción',max_length=100)
+    certificado = models.FileField('Certificado / Constancia',upload_to = 'certificados/')
+
+    def __str__ (self):
+        return str ((self.user.user.first_name)+" "+(self.user.user.last_name))+" "+(self.nombre_curso)

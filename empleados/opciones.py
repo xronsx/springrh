@@ -56,6 +56,11 @@ Doctorado = 'Profesional con Doctorado'
 media_en_curso = ''
 superior_en_curso = ''
 
+#Tipos de cursos
+Curso='Curso'
+Diplomado='Diplomado'
+Taller='Taller'
+
 
 STATUS_CHOICES = (
 	(Aguascalientes,'Aguascalientes'),
@@ -122,5 +127,11 @@ NIVEL_ESTUDIOS = (
 	(Matesria, 'Profesional con Maestría'),
 	(Doctorado, 'Profesional con Doctorado'),
 	(media_en_curso, 'Educación Media en curso'),
-	(superior_en_curso, 'Educación Superior en curso')
+	(superior_en_curso, 'Educación Superior en curso'),
+)
+
+TIPOS_CURSOS = (
+	(Curso, 'Curso'),
+	(Diplomado, 'Diplomado'),
+	(Taller, 'Taller'),
 )

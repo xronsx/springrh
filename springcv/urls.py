@@ -47,6 +47,9 @@ extra_patterns2 = [
     url(r'^confirma4', empleados_views.confirma_etapa_4, name = 'confirma4'),
         # ETAPA 4
     url(r'^etapa-5', empleados_views.etapa_5, name = 'etapa-5'),
+    url(r'^rechaza5_9', empleados_views.rechaza_etapa_5_status_9, name = 'rechaza-status-9'),
+    url(r'^confirma5_9', empleados_views.confirma_etapa_5_status_9, name = 'confirma-status-9'),
+    url(r'^borrar-curso/(?P<id>[-A-Za-z0-9_]+)$', empleados_views.borrar_curso, name = 'borrar-curso'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns = [

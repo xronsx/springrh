@@ -202,4 +202,11 @@ class EstudiosForm(forms.ModelForm):
         for campos in self.fields:
             self.fields[campos].widget.attrs.update({'class': 'form-control'})
 
-
+class CapacitacionForm(forms.ModelForm):
+    class Meta:
+        model = Capacitaciones
+        exclude = ('user',)
+    def __init__(self, *args, **kwargs):
+        super(CapacitacionForm, self).__init__(*args, **kwargs)
+        for campos in self.fields:
+            self.fields[campos].widget.attrs.update({'class': 'form-control'})
