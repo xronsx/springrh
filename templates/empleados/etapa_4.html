@@ -438,8 +438,12 @@
                 {% else %}
 
                         <div class="col-lg-12">
-
-                        <button type="submit" class="btn btn-block btn-rounded btn-primary">Aceptar</button>
+                            {% if empleado.status == 7 %}
+                                <a class="btn btn-success btn-rounded" href="{% url 'rechaza4' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Editar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                <a class="btn btn-primary btn-rounded" href="{% url 'confirma4' %}">&nbsp;&nbsp;Confirmar&nbsp;&nbsp;</a>
+                            {% else %}
+                                <button type="submit" class="btn btn-block btn-rounded btn-primary">Aceptar</button>
+                            {% endif %}
                         </div>
 
                 {% endif %}

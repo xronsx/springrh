@@ -406,6 +406,7 @@ def etapa_4(request, template_name = "empleados/etapa_4.html"):
             formsetHijos = HijoFormSet(request.POST)
             if formCantidadHijos.is_valid():
                 empleado.numero_hijos = formCantidadHijos.cleaned_data['cantidad']
+                print(empleado.numero_hijos)
                 empleado.status = 7
                 empleado.save()
             if formsetHijos.is_valid():
